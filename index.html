@@ -147,9 +147,11 @@
                     <header id="header">
                         <a href="index.html" class="logo"><strong>PAUL</strong> THE ANALYST</a>
                         <ul class="icons">
-                            <li><a href="https://twitter.com/yourprofile" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="https://facebook.com/yourprofile" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                            <li><a href="https://instagram.com/yourprofile" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="https://x.com/SanniPaul232" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://www.instagram.com/pauladedayosanni/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="https://github.com/MASTERDHARYOR" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                            <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
                         </ul>
                     </header>
 
@@ -260,40 +262,60 @@
                     <!-- Blog Posts Section -->
                     <section id="posts">
                         <header class="major">
-                            <h2>Blog Posts</h2>
+                            <h2>Latest Blog Posts</h2>
                         </header>
                         <div class="content">
-                            <p>Welcome to my blog, where I share my thoughts on data analytics, business intelligence, and much more. Check out my latest posts and stay updated on the world of data!</p>
-                            <ul id="recent-posts">
-                                <!-- Recent blog posts will be dynamically loaded here -->
-                            </ul>
+                            <p>Check out my latest blog posts below, or visit my blog for more insights!</p>
+                            <div id="latest-posts">
+                                <!-- First Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2025/04/07/from-self-development-to-data-why-im-merging-both-on-this-blog/" target="_blank">
+                                    <h3>From Self-Development to Data: Why I’m Merging Both on This Blog</h3>
+                                    <p>Discover how self-development and data analytics intersect in this exciting new post. Learn why merging these two fields can lead to powerful insights and personal growth.</p>
+                                </a>
+                                <!-- Second Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2019/11/19/building-the-total-youth/" target="_blank">
+                                    <h3>Building the Total Youth</h3>
+                                    <p>Explore the principles of building a well-rounded youth, focusing on personal development, leadership, and the power of purpose.</p>
+                                </a>
+                            </div>
                             <ul class="actions">
-                                <li><a href="https://masterblogspot.wordpress.com" class="button">Visit My Blog</a></li>
+                                <li><a href="https://masterblogspot.wordpress.com" class="button" target="_blank">Visit My Blog</a></li>
                             </ul>
                         </div>
                     </section>
 
                     <script>
-                        // Fetch recent posts from WordPress blog using REST API
-                        const blogUrl = "https://masterblogspot.wordpress.com/wp-json/wp/v2/posts?per_page=5";
+                        // Fetch the latest blog post from WordPress
+                        const blogUrl = "https://masterblogspot.wordpress.com/wp-json/wp/v2/posts?per_page=1";
 
                         fetch(blogUrl)
                             .then(response => response.json())
                             .then(posts => {
-                                const postsList = document.getElementById('recent-posts');
-                                posts.forEach(post => {
-                                    const listItem = document.createElement('li');
-                                    listItem.innerHTML = `
-                                        <a href="${post.link}" target="_blank">
-                                            <h3>${post.title.rendered}</h3>
-                                            <p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p>
-                                        </a>
-                                    `;
-                                    postsList.appendChild(listItem);
-                                });
+                                const latestPost = posts[0]; // Get the most recent post
+                                const postContainer = document.getElementById('latest-post');
+                                postContainer.innerHTML = `
+                                    <a href="${latestPost.link}" target="_blank">
+                                        <h3>${latestPost.title.rendered}</h3>
+                                        <p>${latestPost.excerpt.rendered.replace(/<[^>]+>/g, '')}</p>
+                                    </a>
+                                `;
                             })
-                            .catch(error => console.error('Error fetching blog posts:', error));
+                            .catch(error => console.error('Error fetching the latest blog post:', error));
                     </script>
+
+                    <!-- Contact Section -->
+                    <section id="contact">
+                        <header class="major">
+                            <h2>Contact Me</h2>
+                        </header>
+                        <div class="content">
+                            <p>If you’d like to get in touch, feel free to reach out via email or connect with me on LinkedIn.</p>
+                            <ul class="icons">
+                                <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                                <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank"><span class="label">LinkedIn</span></a></li>
+                            </ul>
+                        </div>
+                    </section>
 
                 </div>
             </div>
