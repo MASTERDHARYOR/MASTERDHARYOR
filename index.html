@@ -1,0 +1,351 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PAUL THE ANALYST</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        
+        <!-- Add custom CSS for popup and views counter -->
+        <style>
+            .quote-popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.9); /* Black background with slight transparency */
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                animation: fadeIn 1s ease-in-out;
+            }
+            .quote-popup-content {
+                background-color: #ffffff; /* White background for the content */
+                padding: 40px;
+                border-radius: 12px;
+                max-width: 800px;
+                text-align: center;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                animation: scaleUp 0.5s ease-in-out;
+            }
+            .quote-popup-content p {
+                font-size: 24px;
+                font-weight: bold;
+                color: #000000; /* Black text color */
+                margin-bottom: 20px;
+            }
+            .quote-popup-content button {
+                margin-top: 20px;
+                padding: 12px 24px;
+                background-color: #000000; /* Black button background */
+                color: #ffffff; /* White text for the button */
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .quote-popup-content button:hover {
+                background-color: #333333; /* Darker black for hover effect */
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes scaleUp {
+                from {
+                    transform: scale(0.8);
+                }
+                to {
+                    transform: scale(1);
+                }
+            }
+            #post-views {
+                font-weight: bold;
+            }
+            /* Ensure project descriptions have black font color */
+            .project-card p {
+                color: black;
+            }
+        </style>
+
+        <script>
+            // Quotes array
+            const quotes = [
+                "Data is the new oil – but like oil, it must be refined to have value.",
+                "The goal is to turn data into information, and information into insight.",
+                "Without data, you're just another person with an opinion.",
+                "In God we trust, all others bring data.",
+                "Big data isn’t about the data, it’s about the insights you derive from it.",
+                "Data analysis is the art of making sense out of chaos.",
+                "If you can’t measure it, you can’t improve it.",
+                "Data is a tool for enhancing intuition.",
+                "The data scientist is the new Renaissance person.",
+                "Life is about data: You don’t have to predict the future, just prepare for it with the right data.",
+                "Risk comes from not knowing what you’re doing.",
+                "A data-driven organization is a risk-aware organization.",
+                "Data is like a puzzle – every piece adds value to the bigger picture.",
+                "The more data you have, the more informed decisions you can make.",
+                "Risk is the price you pay for opportunity.",
+                "Data analysis is about finding patterns that tell stories.",
+                "Data helps turn questions into answers and possibilities into actions.",
+                "Good data can be more valuable than gold.",
+                "Sometimes the best data point is not the one you collect, but the one you didn't need.",
+                "In the world of data analysis, there is no failure, only feedback.",
+                "There is no perfect data, just better analysis.",
+                "Data-driven decisions are the most reliable and objective.",
+                "The essence of data science is in the questions, not the data.",
+                "It’s not the data, it’s how you interpret it.",
+                "In the end, data is not about numbers, but about the insights it reveals.",
+                "Data doesn’t lie, but interpretations can.",
+                "Data is the bridge between questions and answers.",
+                "The power of data lies in its ability to tell stories.",
+                "Data is the foundation of innovation and progress."
+            ];
+
+            function showQuotePopup() {
+                const quoteIndex = Math.floor(Math.random() * quotes.length);
+                document.getElementById('quote-text').textContent = `"${quotes[quoteIndex]}"`;
+                document.getElementById('quote-popup').style.display = 'flex';
+            }
+
+            function closeQuotePopup() {
+                document.getElementById('quote-popup').style.display = 'none';
+            }
+
+            // Simple view counter
+            let viewCount = localStorage.getItem('postViewCount') || 0;
+            viewCount++;
+            localStorage.setItem('postViewCount', viewCount);
+
+            function updateViewCounter() {
+                document.getElementById('post-views').textContent = `This post has been viewed ${viewCount} times.`;
+            }
+
+            // Ensure the functions run on page load
+            window.onload = function () {
+                setTimeout(showQuotePopup, 1000); // Show popup after 1 second
+                updateViewCounter();
+            };
+        </script>
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+
+                    <!-- Header -->
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>PAUL</strong> THE ANALYST</a>
+                        <ul class="icons">
+                            <li><a href="https://twitter.com/yourprofile" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="https://facebook.com/yourprofile" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                            <li><a href="https://instagram.com/yourprofile" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                        </ul>
+                    </header>
+
+                    <!-- Banner -->
+                    <section id="banner">
+                        <div class="content">
+                            <header>
+                                <h1>Hi, I’m Paul<br />
+                                Adedayo Sanni</h1>
+                                <p>A passionate data analyst leveraging tools like Python, SQL, and Power BI to uncover actionable insights and optimize business strategies. My goal is to empower organizations through data-driven decision-making.</p>
+                            </header>
+                            <ul class="actions">
+                                <li><a href="#projects" class="button big">Explore My Projects</a></li>
+                                <li><a href="#posts" class="button big">Read My Posts</a></li>
+                            </ul>
+                        </div>
+                        <span class="image object">
+                            <img src="images/2NEWTTITLE.gif" alt="" />
+                        </span>
+                    </section>
+
+                    <!-- Data Analytics Expertise Section -->
+                    <section id="data-expertise">
+                        <header class="major">
+                            <h2>Data Analytics Expertise</h2>
+                        </header>
+                        <div class="features">
+                            <article>
+                                <span class="icon fa-gem"></span>
+                                <div class="content">
+                                    <h3>Data-Driven Insights</h3>
+                                    <p>Transform complex data into clear, actionable insights that drive business decisions. I specialize in building reports and dashboards that make data understandable and accessible for decision-makers.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-paper-plane"></span>
+                                <div class="content">
+                                    <h3>SQL & Database Management</h3>
+                                    <p>Use SQL to efficiently manage large datasets, perform complex queries, and extract valuable insights from databases, streamlining decision-making processes across organizations.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-rocket"></span>
+                                <div class="content">
+                                    <h3>Python for Data Analysis</h3>
+                                    <p>Python is my go-to tool for advanced data analysis. I use it for data cleaning, visualization, statistical analysis, and building predictive models that optimize business performance.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-signal"></span>
+                                <div class="content">
+                                    <h3>Business Intelligence & Reporting</h3>
+                                    <p>I design dynamic BI dashboards and provide real-time data-driven reports to help organizations track performance, make data-backed decisions, and stay ahead of industry trends.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Projects Section -->
+                    <section id="projects">
+                        <header class="major">
+                            <h2>Projects & Case Studies</h2>
+                        </header>
+                        <div class="posts">
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="project-card">
+                                    <img src="images/marketing.jpg" alt="Marketing Campaign Analysis" style="max-width: 100%; height: auto;">
+                                    <h3>Marketing Campaign Analysis</h3>
+                                    <p>Analyzed a marketing campaign's performance using Power BI to track conversion rates and ROI. Developed insights that helped refine the company’s future campaign strategies.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="project-card">
+                                    <img src="images/DASH3.png" alt="Unified Consumer Behavior & Revenue Insights Report" style="max-width: 100%; height: auto;">
+                                    <h3>Unified Consumer Behavior & Revenue Insights Report</h3>
+                                    <p>Generated actionable insights into consumer behavior and revenue trends using Python and Power BI, enabling data-driven decision-making for businesses.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="project-card">
+                                    <img src="images/Jamb.png" alt="JAMB Exam Performance Analysis" style="max-width: 100%; height: auto;">
+                                    <h3>JAMB Exam Performance Analysis</h3>
+                                    <p>Explored how school type, teacher quality, and study habits impact JAMB performance. Visualized insights using Power BI to guide educational improvements.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="project-card">
+                                    <img src="images/call center.png" alt="Call Centre Performance Metrics" style="max-width: 100%; height: auto;">
+                                    <h3>Call Centre Performance Metrics</h3>
+                                    <p>Provided a comprehensive analysis of call center performance using Power BI, focusing on key metrics like agent efficiency, customer satisfaction, and call resolution trends.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- Blog Posts Section -->
+                    <section id="posts">
+                        <header class="major">
+                            <h2>Blog Posts</h2>
+                        </header>
+                        <div class="content">
+                            <p>Welcome to my blog, where I share my thoughts on data analytics, business intelligence, and much more. Check out my latest posts and stay updated on the world of data!</p>
+                            <ul id="recent-posts">
+                                <!-- Recent blog posts will be dynamically loaded here -->
+                            </ul>
+                            <ul class="actions">
+                                <li><a href="https://masterblogspot.wordpress.com" class="button">Visit My Blog</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <script>
+                        // Fetch recent posts from WordPress blog using REST API
+                        const blogUrl = "https://masterblogspot.wordpress.com/wp-json/wp/v2/posts?per_page=5";
+
+                        fetch(blogUrl)
+                            .then(response => response.json())
+                            .then(posts => {
+                                const postsList = document.getElementById('recent-posts');
+                                posts.forEach(post => {
+                                    const listItem = document.createElement('li');
+                                    listItem.innerHTML = `
+                                        <a href="${post.link}" target="_blank">
+                                            <h3>${post.title.rendered}</h3>
+                                            <p>${post.excerpt.rendered.replace(/<[^>]+>/g, '')}</p>
+                                        </a>
+                                    `;
+                                    postsList.appendChild(listItem);
+                                });
+                            })
+                            .catch(error => console.error('Error fetching blog posts:', error));
+                    </script>
+
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div id="sidebar">
+                <div class="inner">
+
+                    <!-- Search -->
+                    <section id="search" class="alt">
+                        <form method="post" action="#">
+                            <input type="text" name="query" id="query" placeholder="Search" />
+                        </form>
+                    </section>
+
+                    <!-- Menu -->
+                    <nav id="menu">
+                        <header class="major">
+                            <h2>Menu</h2>
+                        </header>
+                        <ul>
+                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#posts">Posts</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Footer -->
+                    <footer id="footer">
+                        <p class="copyright">&copy; Paul The Analyst. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                    </footer>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quote Popup -->
+        <div id="quote-popup" class="quote-popup">
+            <div class="quote-popup-content">
+                <p id="quote-text"></p>
+                <button onclick="closeQuotePopup()">Close</button>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
