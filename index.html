@@ -4,7 +4,11 @@
         <title>PAUL THE ANALYST</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Paul The Analyst - A portfolio showcasing data analytics expertise, projects, and blog posts.">
+        <meta name="keywords" content="Data Analytics, Python, SQL, Power BI, Portfolio, Blog">
+        <meta name="author" content="Paul Adedayo Sanni">
         <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
         
         <!-- Add custom CSS for popup and views counter -->
         <style>
@@ -72,6 +76,13 @@
             .project-card p {
                 color: black;
             }
+            body.dark-mode {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            body.dark-mode a {
+                color: #4caf50;
+            }
         </style>
 
         <script>
@@ -132,6 +143,17 @@
                 setTimeout(showQuotePopup, 1000); // Show popup after 1 second
                 updateViewCounter();
             };
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'YOUR_TRACKING_ID');
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init();
         </script>
     </head>
     <body class="is-preload">
@@ -195,7 +217,7 @@
                             </article>
                             <article>
                                 <span class="icon solid fa-rocket"></span>
-                                <div class="content">
+                                <div class="content" data-aos="fade-up">
                                     <h3>Python for Data Analysis</h3>
                                     <p>Python is my go-to tool for advanced data analysis. I use it for data cleaning, visualization, statistical analysis, and building predictive models that optimize business performance.</p>
                                 </div>
@@ -210,14 +232,36 @@
                         </div>
                     </section>
 
+                    <!-- Skills Section -->
+                    <section id="skills">
+                        <header class="major">
+                            <h2>Skills</h2>
+                        </header>
+                        <div class="content">
+                            <ul>
+                                <li>Python (Data Analysis, Machine Learning)</li>
+                                <li>SQL (Database Management, Complex Queries)</li>
+                                <li>Power BI (Dashboard Design, Business Intelligence)</li>
+                                <li>Excel (Data Cleaning, Advanced Formulas)</li>
+                                <li>Data Visualization (Matplotlib, Seaborn, Tableau)</li>
+                                <li>Critical Thinking and Problem Solving</li>
+                            </ul>
+                        </div>
+                    </section>
+
                     <!-- Projects Section -->
                     <section id="projects">
                         <header class="major">
                             <h2>Projects & Case Studies</h2>
                         </header>
-                        <div class="posts">
+                        <div class="filters">
+                            <button onclick="filterProjects('all')">All</button>
+                            <button onclick="filterProjects('data-analysis')">Data Analysis</button>
+                            <button onclick="filterProjects('dashboards')">Dashboards</button>
+                        </div>
+                        <div class="posts" id="project-list">
                             <article>
-                                <a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="project-card">
+                                <a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="project-card data-analysis">
                                     <img src="images/marketing.jpg" alt="Marketing Campaign Analysis" style="max-width: 100%; height: auto;">
                                     <h3>Marketing Campaign Analysis</h3>
                                     <p>Analyzed a marketing campaign's performance using Power BI to track conversion rates and ROI. Developed insights that helped refine the company’s future campaign strategies.</p>
@@ -227,7 +271,7 @@
                                 </a>
                             </article>
                             <article>
-                                <a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="project-card">
+                                <a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="project-card data-analysis">
                                     <img src="images/DASH3.png" alt="Unified Consumer Behavior & Revenue Insights Report" style="max-width: 100%; height: auto;">
                                     <h3>Unified Consumer Behavior & Revenue Insights Report</h3>
                                     <p>Generated actionable insights into consumer behavior and revenue trends using Python and Power BI, enabling data-driven decision-making for businesses.</p>
@@ -237,7 +281,7 @@
                                 </a>
                             </article>
                             <article>
-                                <a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="project-card">
+                                <a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="project-card data-analysis">
                                     <img src="images/Jamb.png" alt="JAMB Exam Performance Analysis" style="max-width: 100%; height: auto;">
                                     <h3>JAMB Exam Performance Analysis</h3>
                                     <p>Explored how school type, teacher quality, and study habits impact JAMB performance. Visualized insights using Power BI to guide educational improvements.</p>
@@ -247,7 +291,7 @@
                                 </a>
                             </article>
                             <article>
-                                <a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="project-card">
+                                <a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="project-card dashboards">
                                     <img src="images/call center.png" alt="Call Centre Performance Metrics" style="max-width: 100%; height: auto;">
                                     <h3>Call Centre Performance Metrics</h3>
                                     <p>Provided a comprehensive analysis of call center performance using Power BI, focusing on key metrics like agent efficiency, customer satisfaction, and call resolution trends.</p>
@@ -256,6 +300,36 @@
                                     </ul>
                                 </a>
                             </article>
+                        </div>
+                    </section>
+
+                    <script>
+                        function filterProjects(category) {
+                            const projects = document.querySelectorAll('.project-card');
+                            projects.forEach(project => {
+                                if (category === 'all' || project.classList.contains(category)) {
+                                    project.style.display = 'block';
+                                } else {
+                                    project.style.display = 'none';
+                                }
+                            });
+                        }
+                    </script>
+
+                    <!-- Testimonials Section -->
+                    <section id="testimonials">
+                        <header class="major">
+                            <h2>What People Say</h2>
+                        </header>
+                        <div class="content">
+                            <blockquote>
+                                <p>"Paul is an exceptional data analyst who consistently delivers actionable insights. His ability to simplify complex data is remarkable."</p>
+                                <footer>- John Doe, Manager at XYZ Corp</footer>
+                            </blockquote>
+                            <blockquote>
+                                <p>"Working with Paul has been a game-changer for our business. His dashboards have helped us make data-driven decisions."</p>
+                                <footer>- Jane Smith, CEO of ABC Ltd</footer>
+                            </blockquote>
                         </div>
                     </section>
 
@@ -277,10 +351,14 @@
                                     <h3>Building the Total Youth</h3>
                                     <p>Explore the principles of building a well-rounded youth, focusing on personal development, leadership, and the power of purpose.</p>
                                 </a>
+                                <!-- Third Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2025/04/10/my-journey-to-a-4-0-cgpa-lessons-in-resilience/" target="_blank">
+                                    <h3>My Journey to a 4.0 CGPA: Lessons in Resilience</h3>
+                                    <p>Learn about the challenges, strategies, and lessons I embraced on my journey to achieving a 4.0 CGPA. A story of resilience and determination.</p>
+                                </a>
                             </div>
                             <ul class="actions">
                                 <li><a href="https://masterblogspot.wordpress.com" class="button" target="_blank">Visit My Blog</a></li>
-                            </ul>
                         </div>
                     </section>
 
@@ -309,11 +387,25 @@
                             <h2>Contact Me</h2>
                         </header>
                         <div class="content">
-                            <p>If you’d like to get in touch, feel free to reach out via email or connect with me on LinkedIn.</p>
-                            <ul class="icons">
-                                <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                                <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank"><span class="label">LinkedIn</span></a></li>
-                            </ul>
+                            <form action="https://formspree.io/f/your-form-id" method="POST">
+                                <div class="fields">
+                                    <div class="field">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" class="button"></li>
+                                </ul>
+                            </form>
                         </div>
                     </section>
 
@@ -362,12 +454,21 @@
             </div>
         </div>
 
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+            const toggle = document.getElementById('dark-mode-toggle');
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+            });
+        </script>
 
     </body>
 </html>
