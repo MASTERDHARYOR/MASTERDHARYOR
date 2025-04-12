@@ -9,9 +9,13 @@
         <meta name="author" content="Paul Adedayo Sanni">
         <link rel="stylesheet" href="assets/css/main.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-        
-        <!-- Add custom CSS for popup and views counter -->
+
+        <!-- Custom Styles -->
         <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            /* Popup Styling */
             .quote-popup {
                 display: none;
                 position: fixed;
@@ -19,7 +23,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.9); /* Black background with slight transparency */
+                background-color: rgba(0, 0, 0, 0.8); /* Slightly opaque black background */
                 justify-content: center;
                 align-items: center;
                 z-index: 1000;
@@ -27,32 +31,34 @@
             }
             .quote-popup-content {
                 background-color: #ffffff; /* White background for the content */
-                padding: 40px;
-                border-radius: 12px;
-                max-width: 800px;
+                padding: 60px; /* Increased padding for a larger popup */
+                border-radius: 16px; /* Slightly rounded corners */
+                max-width: 900px; /* Larger width */
                 text-align: center;
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
                 animation: scaleUp 0.5s ease-in-out;
             }
             .quote-popup-content p {
-                font-size: 24px;
+                font-size: 28px; /* Larger font size */
                 font-weight: bold;
                 color: #000000; /* Black text color */
-                margin-bottom: 20px;
+                margin-bottom: 30px;
             }
             .quote-popup-content button {
                 margin-top: 20px;
-                padding: 12px 24px;
+                padding: 14px 28px;
                 background-color: #000000; /* Black button background */
                 color: #ffffff; /* White text for the button */
                 border: none;
                 border-radius: 8px;
                 cursor: pointer;
-                font-size: 16px;
+                font-size: 18px; /* Larger button text */
             }
             .quote-popup-content button:hover {
                 background-color: #333333; /* Darker black for hover effect */
             }
+
+            /* Animations */
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -69,13 +75,8 @@
                     transform: scale(1);
                 }
             }
-            #post-views {
-                font-weight: bold;
-            }
-            /* Ensure project descriptions have black font color */
-            .project-card p {
-                color: black;
-            }
+
+            /* Dark Mode Styling */
             body.dark-mode {
                 background-color: #121212;
                 color: #ffffff;
@@ -83,11 +84,44 @@
             body.dark-mode a {
                 color: #4caf50;
             }
+
+            /* Contact Section Styling */
+            #contact .fields {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            #contact .field {
+                flex: 1 1 100%;
+            }
+            #contact .field.half {
+                flex: 1 1 calc(50% - 20px);
+            }
+            #contact input, #contact textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            #contact textarea {
+                resize: none;
+            }
+            #contact .actions {
+                display: flex;
+                gap: 10px;
+            }
+            #contact .actions .button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
         </style>
 
+        <!-- JavaScript -->
         <script>
             // Quotes array
             const quotes = [
+                // 🔍 Data & Analytics
                 "Data is the new oil – but like oil, it must be refined to have value.",
                 "The goal is to turn data into information, and information into insight.",
                 "Without data, you're just another person with an opinion.",
@@ -98,14 +132,8 @@
                 "Data is a tool for enhancing intuition.",
                 "The data scientist is the new Renaissance person.",
                 "Life is about data: You don’t have to predict the future, just prepare for it with the right data.",
-                "Risk comes from not knowing what you’re doing.",
-                "A data-driven organization is a risk-aware organization.",
-                "Data is like a puzzle – every piece adds value to the bigger picture.",
-                "The more data you have, the more informed decisions you can make.",
-                "Risk is the price you pay for opportunity.",
-                "Data analysis is about finding patterns that tell stories.",
                 "Data helps turn questions into answers and possibilities into actions.",
-                "Good data can be more valuable than gold.",
+                "The more data you have, the more informed decisions you can make.",
                 "Sometimes the best data point is not the one you collect, but the one you didn't need.",
                 "In the world of data analysis, there is no failure, only feedback.",
                 "There is no perfect data, just better analysis.",
@@ -116,7 +144,50 @@
                 "Data doesn’t lie, but interpretations can.",
                 "Data is the bridge between questions and answers.",
                 "The power of data lies in its ability to tell stories.",
-                "Data is the foundation of innovation and progress."
+                "Data is the foundation of innovation and progress.",
+                "Every data point is a clue; every pattern is a possibility.",
+                "We are drowning in data but starving for insight.",
+
+                // ⚖️ Risk & Decision-Making
+                "Risk comes from not knowing what you’re doing. — Warren Buffett",
+                "A data-driven organization is a risk-aware organization.",
+                "Risk is the price you pay for opportunity.",
+                "The purpose of risk management is not to eliminate risk, but to understand it.",
+                "Risk is like fire: If controlled it will help you; if uncontrolled it will rise up and destroy you.",
+                "Uncertainty is a given. Data helps us manage it.",
+                "You can't eliminate risk, but you can illuminate it with data.",
+                "Decisions made without data are just educated guesses dressed up as strategy.",
+                "To manage risk is to understand the story your data is trying to tell.",
+                "Where there is no data, there is no clarity. Where there is no clarity, there is more risk.",
+                "Risk management is about preparing for the unknown with what you know.",
+                "A bad decision made with good data is still a learning opportunity.",
+                "Not taking a risk is the biggest risk in a data-driven world.",
+                "Every decision involves risk — the smart ones are backed by insight.",
+                "Risk and data go hand in hand; one reveals the danger, the other offers direction.",
+
+                // 🛡️ Insurance, Safety & Strategy
+                "Insurance is the business of preparing for ‘what if’ before it becomes ‘what now.’",
+                "In insurance, data is not just useful — it’s everything.",
+                "Insurance without data is like flying blind in a storm.",
+                "Insurance turns uncertainty into calculated possibility.",
+                "Good underwriting is a data-informed prediction of human behavior.",
+                "Behind every premium is a pattern, a probability, and a purpose.",
+                "Risk is the reason insurance exists. Data is the reason it works.",
+                "Actuarial science is the heartbeat of insurance — and data is its lifeblood.",
+                "The more accurately we assess risk, the fairer we price protection.",
+                "Every policy is a promise backed by data, trust, and financial wisdom.",
+                "The best insurance is insight — and the best insight comes from data.",
+                "Insurance is not just a product, it’s a strategic risk tool powered by analytics.",
+
+                // 💡 Wisdom & Motivation
+                "He who is not courageous enough to take risks will accomplish nothing in life. — Muhammad Ali",
+                "Vision without data is a dream. Data without vision is chaos.",
+                "To know what you don’t know is the first step toward wisdom — and good data.",
+                "Success is built on smart risks and smarter data.",
+                "Your data is speaking. Are you listening?",
+                "You don't need more data — you need better questions.",
+                "Clarity is the child of good data and great thinking.",
+                "A mindset for data is a mindset for growth."
             ];
 
             function showQuotePopup() {
@@ -387,23 +458,24 @@
                             <h2>Contact Me</h2>
                         </header>
                         <div class="content">
-                            <form action="https://formspree.io/f/your-form-id" method="POST">
+                            <form action="https://formspree.io/f/xanevoaj" method="POST">
                                 <div class="fields">
-                                    <div class="field">
+                                    <div class="field half">
                                         <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" required>
+                                        <input type="text" name="name" id="name" placeholder="Your Name" required>
                                     </div>
-                                    <div class="field">
+                                    <div class="field half">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" id="email" required>
+                                        <input type="email" name="email" id="email" placeholder="Your Email" required>
                                     </div>
                                     <div class="field">
                                         <label for="message">Message</label>
-                                        <textarea name="message" id="message" rows="4" required></textarea>
+                                        <textarea name="message" id="message" rows="6" placeholder="Your Message" required></textarea>
                                     </div>
                                 </div>
                                 <ul class="actions">
-                                    <li><input type="submit" value="Send Message" class="button"></li>
+                                    <li><input type="submit" value="Send Message" class="button primary"></li>
+                                    <li><input type="reset" value="Clear" class="button"></li>
                                 </ul>
                             </form>
                         </div>
@@ -429,10 +501,10 @@
                             <h2>Menu</h2>
                         </header>
                         <ul>
-                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="#banner">Homepage</a></li>
                             <li><a href="#projects">Projects</a></li>
                             <li><a href="#posts">Posts</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </nav>
 
