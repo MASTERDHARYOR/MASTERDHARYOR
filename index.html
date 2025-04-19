@@ -15,6 +15,9 @@
             html {
                 scroll-behavior: smooth;
             }
+            body {
+                background: #f9f9f9 url('https://www.transparenttextures.com/patterns/white-diamond.png');
+            }
             /* Popup Styling */
             .quote-popup {
                 display: none;
@@ -115,6 +118,43 @@
                 padding: 10px 20px;
                 font-size: 16px;
             }
+
+            /* Button Hover Effect */
+            .button {
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+            .button:hover {
+                background-color: #4caf50; /* Change to a green shade */
+                transform: scale(1.05); /* Slightly enlarge the button */
+            }
+
+            /* Link Hover Effect */
+            a {
+                color: #007bff;
+                text-decoration: none;
+                transition: color 0.3s ease, border-bottom 0.3s ease;
+            }
+
+            a:hover {
+                color: #0056b3; /* Darker blue */
+                border-bottom: 2px solid #0056b3; /* Add underline effect */
+            }
+
+            @media (max-width: 768px) {
+                .fields {
+                    flex-direction: column;
+                }
+
+                .field.half {
+                    flex: 1 1 100%;
+                }
+
+                .actions .button {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
         </style>
 
         <!-- JavaScript -->
@@ -166,21 +206,6 @@
                 "Risk and data go hand in hand; one reveals the danger, the other offers direction.",
 
                 // 🛡️ Insurance, Safety & Strategy
-                "Insurance is the business of preparing for ‘what if’ before it becomes ‘what now.’",
-                "In insurance, data is not just useful — it’s everything.",
-                "Insurance without data is like flying blind in a storm.",
-                "Insurance turns uncertainty into calculated possibility.",
-                "Good underwriting is a data-informed prediction of human behavior.",
-                "Behind every premium is a pattern, a probability, and a purpose.",
-                "Risk is the reason insurance exists. Data is the reason it works.",
-                "Actuarial science is the heartbeat of insurance — and data is its lifeblood.",
-                "The more accurately we assess risk, the fairer we price protection.",
-                "Every policy is a promise backed by data, trust, and financial wisdom.",
-                "The best insurance is insight — and the best insight comes from data.",
-                "Insurance is not just a product, it’s a strategic risk tool powered by analytics.",
-
-                // 💡 Wisdom & Motivation
-                "He who is not courageous enough to take risks will accomplish nothing in life. — Muhammad Ali",
                 "Vision without data is a dream. Data without vision is chaos.",
                 "To know what you don’t know is the first step toward wisdom — and good data.",
                 "Success is built on smart risks and smarter data.",
@@ -288,7 +313,7 @@
                             </article>
                             <article>
                                 <span class="icon solid fa-rocket"></span>
-                                <div class="content" data-aos="fade-up">
+                                <div class="content">
                                     <h3>Python for Data Analysis</h3>
                                     <p>Python is my go-to tool for advanced data analysis. I use it for data cleaning, visualization, statistical analysis, and building predictive models that optimize business performance.</p>
                                 </div>
@@ -395,7 +420,7 @@
                         <div class="content">
                             <blockquote>
                                 <p>"Paul is an exceptional data analyst who consistently delivers actionable insights. His ability to simplify complex data is remarkable."</p>
-                                <footer>- John Doe, Manager at XYZ Corp</footer>
+                                <footer>- John Doe, </footer>
                             </blockquote>
                             <blockquote>
                                 <p>"Working with Paul has been a game-changer for our business. His dashboards have helped us make data-driven decisions."</p>
@@ -510,7 +535,7 @@
 
                     <!-- Footer -->
                     <footer id="footer">
-                        <p class="copyright">&copy; Paul The Analyst. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                        <p class="copyright">&copy; Paul The Analyst. All rights reserved.
                     </footer>
 
                 </div>
