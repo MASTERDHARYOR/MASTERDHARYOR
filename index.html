@@ -22,60 +22,45 @@
             .quote-popup {
                 display: none;
                 position: fixed;
-                top: 0;
+                bottom: 0;
                 left: 0;
                 width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.8); /* Slightly opaque black background */
-                justify-content: center;
-                align-items: center;
+                background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+                color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
                 z-index: 1000;
-                animation: fadeIn 1s ease-in-out;
+                animation: slideIn 0.5s ease-in-out;
             }
             .quote-popup-content {
-                background-color: #ffffff; /* White background for the content */
-                padding: 60px; /* Increased padding for a larger popup */
-                border-radius: 16px; /* Slightly rounded corners */
-                max-width: 900px; /* Larger width */
                 text-align: center;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-                animation: scaleUp 0.5s ease-in-out;
+                font-size: 18px;
+                font-weight: bold;
             }
             .quote-popup-content p {
-                font-size: 28px; /* Larger font size */
-                font-weight: bold;
-                color: #000000; /* Black text color */
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             .quote-popup-content button {
-                margin-top: 20px;
-                padding: 14px 28px;
-                background-color: #000000; /* Black button background */
-                color: #ffffff; /* White text for the button */
+                padding: 10px 20px;
+                background-color: #4caf50; /* Green button */
+                color: #ffffff;
                 border: none;
-                border-radius: 8px;
+                border-radius: 5px;
                 cursor: pointer;
-                font-size: 18px; /* Larger button text */
+                font-size: 16px;
+                transition: background-color 0.3s ease;
             }
             .quote-popup-content button:hover {
-                background-color: #333333; /* Darker black for hover effect */
+                background-color: #388e3c; /* Darker green on hover */
             }
 
-            /* Animations */
-            @keyframes fadeIn {
+            /* Slide-In Animation */
+            @keyframes slideIn {
                 from {
-                    opacity: 0;
+                    transform: translateY(100%);
                 }
                 to {
-                    opacity: 1;
-                }
-            }
-            @keyframes scaleUp {
-                from {
-                    transform: scale(0.8);
-                }
-                to {
-                    transform: scale(1);
+                    transform: translateY(0);
                 }
             }
 
@@ -218,7 +203,7 @@
             function showQuotePopup() {
                 const quoteIndex = Math.floor(Math.random() * quotes.length);
                 document.getElementById('quote-text').textContent = `"${quotes[quoteIndex]}"`;
-                document.getElementById('quote-popup').style.display = 'flex';
+                document.getElementById('quote-popup').style.display = 'block';
             }
 
             function closeQuotePopup() {
@@ -240,7 +225,7 @@
                 updateViewCounter();
             };
         </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -250,6 +235,14 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script>
             AOS.init();
+        </script>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E680S7B2S1');
         </script>
     </head>
     <body class="is-preload">
@@ -406,16 +399,29 @@
                                     </ul>
                                 </a>
                             </article>
-                            <article>
-                                <a href="https://masterblogspot.wordpress.com/2025/04/24/unlocking-restaurant-revenue-a-power-bi-analysis/" class="project-card data-analysis">
-                                    <img src="images/Rest.png" alt="Unlocking Restaurant Revenue: A Power BI Analysis" style="max-width: 100%; height: auto;">
-                                    <h3>Unlocking Restaurant Revenue: A Power BI Analysis</h3>
-                                    <p>Conducted a detailed analysis of restaurant revenue using Power BI, uncovering key trends and actionable insights to optimize profitability and customer satisfaction.</p>
+                            <article class="project-card data-analysis">
+                                <a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="project-card data-analysis">
+                                    <img src="images/Bike 2.png" alt="Customer Insights for Strategic Bike Sales Growth" style="max-width: 100%; height: auto;">
+                                    <h3>Customer Insights for Strategic Bike Sales Growth</h3>
+                                    <p>Analyzed customer demographics, behavior, and socio-economic factors to provide actionable insights for strategic bike sales growth.</p>
                                     <ul class="actions">
-                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/24/unlocking-restaurant-revenue-a-power-bi-analysis/" class="button">View Project</a></li>
+                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="button">View Project</a></li>
                                     </ul>
                                 </a>
                             </article>
+                        </div>
+                    </section>
+
+                    <!-- New Project Showcase Section -->
+                    <section id="showcase">
+                        <header class="major">
+                            <h2>Explore the Full Project Showcase</h2>
+                        </header>
+                        <div class="content">
+                            <p>Discover all my projects in one place, complete with detailed summaries and visuals. Click below to explore the full showcase!</p>
+                            <ul class="actions">
+                                <li><a href="generic.html" class="button big">Visit Project Showcase</a></li>
+                            </ul>
                         </div>
                     </section>
 
@@ -546,16 +552,27 @@
                             <h2>Menu</h2>
                         </header>
                         <ul>
-                            <li><a href="#banner">Homepage</a></li>
-                            <li><a href="#projects">Projects</a></li>
-                            <li><a href="#posts">Posts</a></li>
+                            <li><a href="index.html">Homepage</a></li>
+                            <li><a href="elements.html">Academy & Resources</a></li>
+                            <li><a href="admin.html">Admin Dashboard</a></li>
+                            <li>
+                                <span class="opener">Submenu</span>
+                                <ul>
+                                    <li><a href="#free-courses">Free Courses</a></li>
+                                    <li><a href="#paid-courses">Paid Courses</a></li>
+                                    <li><a href="#community">Community Forum</a></li>
+                                    <li><a href="#events">Events</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#quiz">Test Your Knowledge</a></li>
+                            <li><a href="#resources">Tools & Resources</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </nav>
 
-                    <!-- Footer -->
+                    <!-- Footer Fix -->
                     <footer id="footer">
-                        <p class="copyright">&copy; Paul The Analyst. All rights reserved.
+                        <p class="copyright">&copy; Paul The Analyst. All rights reserved.</p>
                     </footer>
 
                 </div>
@@ -567,12 +584,32 @@
         <div id="quote-popup" class="quote-popup">
             <div class="quote-popup-content">
                 <p id="quote-text"></p>
-                <button onclick="closeQuotePopup()">Close</button>
+                <button onclick="closeQuotePopup()">Got It!</button>
             </div>
         </div>
 
         <!-- Dark Mode Toggle Button -->
         <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
+        <!-- Dark Mode Button Styling -->
+        <style>
+            #dark-mode-toggle {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                z-index: 1000;
+            }
+            #dark-mode-toggle:hover {
+                background-color: #388e3c;
+            }
+        </style>
 
         <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>

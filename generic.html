@@ -1,172 +1,555 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Generic - Editorial by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+    <head>
+        <title>PAUL THE ANALYST</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Paul The Analyst - A portfolio showcasing data analytics expertise, projects, and blog posts.">
+        <meta name="keywords" content="Data Analytics, Python, SQL, Power BI, Portfolio, Blog">
+        <meta name="author" content="Paul Adedayo Sanni">
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E680S7B2S1');
+        </script>
+        <!-- Custom Styles -->
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                background: #f9f9f9 url('https://www.transparenttextures.com/patterns/white-diamond.png');
+            }
+            .quote-popup {
+                display: none;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+            }
+            .quote-popup-content {
+                text-align: center;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .quote-popup-content p {
+                margin-bottom: 20px;
+            }
+            .quote-popup-content button {
+                padding: 10px 20px;
+                background-color: #4caf50; /* Green button */
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s ease;
+            }
+            .quote-popup-content button:hover {
+                background-color: #388e3c; /* Darker green on hover */
+            }
+            /* Slide-In Animation */
+            @keyframes slideIn {
+                from {
+                    transform: translateY(100%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+            /* Dark Mode Styling */
+            body.dark-mode {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            body.dark-mode a {
+                color: #4caf50;
+            }
+            /* Contact Section Styling */
+            #contact .fields {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            #contact .field {
+                flex: 1 1 100%;
+            }
+            #contact .field.half {
+                flex: 1 1 calc(50% - 20px);
+            }
+            #contact input, #contact textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            #contact textarea {
+                resize: none;
+            }
+            #contact .actions {
+                display: flex;
+                gap: 10px;
+            }
+            #contact .actions .button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            /* Button Hover Effect */
+            .button {
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+            .button:hover {
+                background-color: #4caf50; /* Change to a green shade */
+                transform: scale(1.05); /* Slightly enlarge the button */
+            }
+            /* Link Hover Effect */
+            a {
+                color: #007bff;
+                text-decoration: none;
+                transition: color 0.3s ease, border-bottom 0.3s ease;
+            }
+            a:hover {
+                color: #0056b3; /* Darker blue */
+                border-bottom: 2px solid #0056b3; /* Add underline effect */
+            }
+            @media (max-width: 768px) {
+                .fields {
+                    flex-direction: column;
+                }
+                .field.half {
+                    flex: 1 1 100%;
+                }
+                .actions .button {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        </style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'YOUR_TRACKING_ID');
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </head>
+    <body class="is-preload">
+        <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Main -->
+            <div id="main">
+                <div class="inner">
+                    <!-- Header -->
+                    <header id="header">
+                        <a href="index.html" class="logo"><strong>Paul The Analyst</strong> - Project Showcase</a>
+                        <ul class="icons">
+                            <li><a href="https://x.com/SanniPaul232" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://www.instagram.com/pauladedayosanni/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="https://github.com/MASTERDHARYOR" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                            <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                        </ul>
+                    </header>
+                    <!-- Banner -->
+                    <section id="banner">
+                        <div class="content">
+                            <header>
+                                <h1>Hi, I’m Paul<br />
+                                Adedayo Sanni</h1>
+                                <p>A passionate data analyst leveraging tools like Python, SQL, and Power BI to uncover actionable insights and optimize business strategies. My goal is to empower organizations through data-driven decision-making.</p>
+                            </header>
+                            <ul class="actions">
+                                <li><a href="#projects" class="button big">Explore My Projects</a></li>
+                                <li><a href="#posts" class="button big">Read My Posts</a></li>
+                            </ul>
+                        </div>
+                        <span class="image object">
+                            <img src="images/2NEWTTITLE.gif" alt="" />
+                        </span>
+                    </section>
+                    <!-- Data Analytics Expertise Section -->
+                    <section id="data-expertise">
+                        <header class="major">
+                            <h2>Data Analytics Expertise</h2>
+                        </header>
+                        <div class="features">
+                            <article>
+                                <span class="icon fa-gem"></span>
+                                <div class="content">
+                                    <h3>Data-Driven Insights</h3>
+                                    <p>Transform complex data into clear, actionable insights that drive business decisions. I specialize in building reports and dashboards that make data understandable and accessible for decision-makers.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-paper-plane"></span>
+                                <div class="content">
+                                    <h3>SQL & Database Management</h3>
+                                    <p>Use SQL to efficiently manage large datasets, perform complex queries, and extract valuable insights from databases, streamlining decision-making processes across organizations.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-rocket"></span>
+                                <div class="content">
+                                    <h3>Python for Data Analysis</h3>
+                                    <p>Python is my go-to tool for advanced data analysis. I use it for data cleaning, visualization, statistical analysis, and building predictive models that optimize business performance.</p>
+                                </div>
+                            </article>
+                            <article>
+                                <span class="icon solid fa-signal"></span>
+                                <div class="content">
+                                    <h3>Business Intelligence & Reporting</h3>
+                                    <p>I design dynamic BI dashboards and provide real-time data-driven reports to help organizations track performance, make data-backed decisions, and stay ahead of industry trends.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                    <!-- Skills Section -->
+                    <section id="skills">
+                        <header class="major">
+                            <h2>Skills</h2>
+                        </header>
+                        <div class="content">
+                            <ul>
+                                <li>Python (Data Analysis, Machine Learning)</li>
+                                <li>SQL (Database Management, Complex Queries)</li>
+                                <li>Power BI (Dashboard Design, Business Intelligence)</li>
+                                <li>Excel (Data Cleaning, Advanced Formulas)</li>
+                                <li>Data Visualization (Matplotlib, Seaborn, Tableau)</li>
+                                <li>Critical Thinking and Problem Solving</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <!-- Projects Section -->
+                    <section id="projects">
+                        <header class="major">
+                            <h2>Projects & Case Studies</h2>
+                        </header>
+                        <div class="filters">
+                            <button onclick="filterProjects('all')">All</button>
+                            <button onclick="filterProjects('data-analysis')">Data Analysis</button>
+                            <button onclick="filterProjects('dashboards')">Dashboards</button>
+                        </div>
+                        <div class="posts" id="project-list">
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="project-card data-analysis">
+                                    <img src="images/marketing.jpg" alt="Marketing Campaign Analysis" style="max-width: 100%; height: auto;">
+                                    <h3>Marketing Campaign Analysis</h3>
+                                    <p>Analyzed a marketing campaign's performance using Power BI to track conversion rates and ROI. Developed insights that helped refine the company’s future campaign strategies.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://masterblogspot.wordpress.com/2025/04/24/conversion-rate-strategies-from-user-behavior-analysis/" class="project-card data-analysis">
+                                    <img src="images/hgh.png" alt="Conversion Rate Strategies from User Behavior Analysis" style="max-width: 100%; height: auto;">
+                                    <h3>Conversion Rate Strategies from User Behavior Analysis</h3>
+                                    <p>Analyzed user behavior data to develop actionable strategies for improving conversion rates. Delivered insights to optimize user experiences and drive results.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/24/conversion-rate-strategies-from-user-behavior-analysis/" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="project-card data-analysis">
+                                    <img src="images/DASH3.png" alt="Unified Consumer Behavior & Revenue Insights Report" style="max-width: 100%; height: auto;">
+                                    <h3>Unified Consumer Behavior & Revenue Insights Report</h3>
+                                    <p>Generated actionable insights into consumer behavior and revenue trends using Python and Power BI, enabling data-driven decision-making for businesses.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="project-card data-analysis">
+                                    <img src="images/Jamb.png" alt="JAMB Exam Performance Analysis" style="max-width: 100%; height: auto;">
+                                    <h3>JAMB Exam Performance Analysis</h3>
+                                    <p>Explored how school type, teacher quality, and study habits impact JAMB performance. Visualized insights using Power BI to guide educational improvements.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article>
+                                <a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="project-card dashboards">
+                                    <img src="images/call center.png" alt="Call Centre Performance Metrics" style="max-width: 100%; height: auto;">
+                                    <h3>Call Centre Performance Metrics</h3>
+                                    <p>Provided a comprehensive analysis of call center performance using Power BI, focusing on key metrics like agent efficiency, customer satisfaction, and call resolution trends.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                            <article class="project-card data-analysis">
+                                <a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="project-card data-analysis">
+                                    <img src="images/Bike 2.png" alt="Customer Insights for Strategic Bike Sales Growth" style="max-width: 100%; height: auto;">
+                                    <h3>Customer Insights for Strategic Bike Sales Growth</h3>
+                                    <p>Analyzed customer demographics, behavior, and socio-economic factors to provide actionable insights for strategic bike sales growth.</p>
+                                    <ul class="actions">
+                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="button">View Project</a></li>
+                                    </ul>
+                                </a>
+                            </article>
+                        </div>
+                    </section>
+                    <!-- New Project Showcase Section -->
+                    <section id="showcase">
+                        <header class="major">
+                            <h2>Explore the Full Project Showcase</h2>
+                        </header>
+                        <div class="content">
+                            <p>Discover all my projects in one place, complete with detailed summaries and visuals. Click below to explore the full showcase!</p>
+                            <ul class="actions">
+                                <li><a href="generic.html" class="button big">Visit Project Showcase</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                    <script>
+                        function filterProjects(category) {
+                            const projects = document.querySelectorAll('.project-card');
+                            projects.forEach(project => {
+                                if (category === 'all' || project.classList.contains(category)) {
+                                    project.style.display = 'block';
+                                } else {
+                                    project.style.display = 'none';
+                                }
+                            });
+                        }
+                    </script>
+                    <!-- Testimonials Section -->
+                    <section id="testimonials">
+                        <header class="major">
+                            <h2>What People Say</h2>
+                        </header>
+                        <div class="content">
+                            <blockquote>
+                                <p>"Paul is an exceptional data analyst who consistently delivers actionable insights. His ability to simplify complex data is remarkable."</p>
+                                <footer>- John Doe,</footer>
+                            </blockquote>
+                            <blockquote>
+                                <p>"Working with Paul has been a game-changer for our business. His dashboards have helped us make data-driven decisions."</p>
+                                <footer>- Jane Smith, CEO of ABC Ltd</footer>
+                            </blockquote>
+                        </div>
+                    </section>
+                    <!-- Blog Posts Section -->
+                    <section id="posts">
+                        <header class="major">
+                            <h2>Latest Blog Posts</h2>
+                        </header>
+                        <div class="content">
+                            <p>Check out my latest blog posts below, or visit my blog for more insights!</p>
+                            <div id="latest-posts">
+                                <!-- First Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2025/04/07/from-self-development-to-data-why-im-merging-both-on-this-blog/" target="_blank">
+                                    <h3>From Self-Development to Data: Why I’m Merging Both on This Blog</h3>
+                                    <p>Discover how self-development and data analytics intersect in this exciting new post. Learn why merging these two fields can lead to powerful insights and personal growth.</p>
+                                </a>
+                                <!-- Second Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2019/11/19/building-the-total-youth/" target="_blank">
+                                    <h3>Building the Total Youth</h3>
+                                    <p>Explore the principles of building a well-rounded youth, focusing on personal development, leadership, and the power of purpose.</p>
+                                </a>
+                                <!-- Third Blog Post -->
+                                <a href="https://masterblogspot.wordpress.com/2025/04/10/my-journey-to-a-4-0-cgpa-lessons-in-resilience/" target="_blank">
+                                    <h3>My Journey to a 4.0 CGPA: Lessons in Resilience</h3>
+                                    <p>Learn about the challenges, strategies, and lessons I embraced on my journey to achieving a 4.0 CGPA. A story of resilience and determination.</p>
+                                </a>
+                            </div>
+                            <ul class="actions">
+                                <li><a href="https://masterblogspot.wordpress.com" class="button" target="_blank">Visit My Blog</a></li>
+                        </div>
+                    </section>
+                    <script>
+                        // Fetch the latest blog post from WordPress
+                        const blogUrl = "https://masterblogspot.wordpress.com/wp-json/wp/v2/posts?per_page=1";
+                        fetch(blogUrl)
+                            .then(response => response.json())
+                            .then(posts => {
+                                const latestPost = posts[0]; // Get the most recent post
+                                const postContainer = document.getElementById('latest-post');
+                                postContainer.innerHTML = `
+                                    <a href="${latestPost.link}" target="_blank">
+                                        <h3>${latestPost.title.rendered}</h3>
+                                        <p>${latestPost.excerpt.rendered.replace(/<[^>]+>/g, '')}</p>
+                                    </a>
+                                `;
+                            })
+                            .catch(error => console.error('Error fetching the latest blog post:', error));
+                    </script>
+                    <!-- Paul The Analyst Academy Section -->
+                    <section id="academy">
+                        <header class="major">
+                            <h2>Paul The Analyst Academy</h2>
+                        </header>
+                        <div class="content">
+                            <p>Learn data analytics from the ground up with our free and paid training programs. Whether you're a beginner or an advanced learner, we have something for you!</p>
+                            <div class="courses">
+                                <div class="course">
+                                    <h3>Free Courses</h3>
+                                    <p>Get started with data analytics for free. Learn the basics of Python, SQL, and Power BI.</p>
+                                    <a href="free-courses.html" class="button">Explore Free Courses</a>
+                                </div>
+                                <div class="course">
+                                    <h3>Paid Courses</h3>
+                                    <p>Take your skills to the next level with our advanced training programs. Learn from real-world projects and case studies.</p>
+                                    <a href="paid-courses.html" class="button primary">Enroll in Paid Courses</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Sign Up Section -->
+                    <section id="signup">
+                        <header class="major">
+                            <h2>Sign Up for Updates</h2>
+                        </header>
+                        <div class="content">
+                            <p>Stay updated on our latest courses, free resources, and community events. Sign up now!</p>
+                            <form method="post" action="submit-form.php">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <button type="submit" class="button primary">Sign Up</button>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- Contact Section -->
+                    <section id="contact">
+                        <header class="major">
+                            <h2>Contact Me</h2>
+                        </header>
+                        <div class="content">
+                            <form method="post" action="#">
+                                <div class="fields">
+                                    <div class="field half">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" />
+                                    </div>
+                                    <div class="field half">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" rows="6"></textarea>
+                                    </div>
+                                </div>
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                                    <li><input type="reset" value="Reset" /></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </section>
+                    <!-- Footer -->
+                    <footer id="footer">
+                        <p>&copy; Paul The Analyst. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- JavaScript -->
+        <script>
+            // Quotes array
+            const quotes = [
+                // 🔍 Data & Analytics
+                "Data is the new oil – but like oil, it must be refined to have value.",
+                "The goal is to turn data into information, and information into insight.",
+                "Without data, you're just another person with an opinion.",
+                "In God we trust, all others bring data.",
+                "Big data isn’t about the data, it’s about the insights you derive from it.",
+                "Data analysis is the art of making sense out of chaos.",
+                "If you can’t measure it, you can’t improve it.",
+                "Data is a tool for enhancing intuition.",
+                "The data scientist is the new Renaissance person.",
+                "Life is about data: You don’t have to predict the future, just prepare for it with the right data.",
+                "Data helps turn questions into answers and possibilities into actions.",
+                "The more data you have, the more informed decisions you can make.",
+                "Sometimes the best data point is not the one you collect, but the one you didn't need.",
+                "In the world of data analysis, there is no failure, only feedback.",
+                "There is no perfect data, just better analysis.",
+                "Data-driven decisions are the most reliable and objective.",
+                "The essence of data science is in the questions, not the data.",
+                "It’s not the data, it’s how you interpret it.",
+                "In the end, data is not about numbers, but about the insights it reveals.",
+                "Data doesn’t lie, but interpretations can.",
+                "Data is the bridge between questions and answers.",
+                "The power of data lies in its ability to tell stories.",
+                "Data is the foundation of innovation and progress.",
+                "Every data point is a clue; every pattern is a possibility.",
+                "We are drowning in data but starving for insight.",
+                // ⚖️ Risk & Decision-Making
+                "Risk comes from not knowing what you’re doing. — Warren Buffett",
+                "A data-driven organization is a risk-aware organization.",
+                "Risk is the price you pay for opportunity.",
+                "The purpose of risk management is not to eliminate risk, but to understand it.",
+                "Risk is like fire: If controlled it will help you; if uncontrolled it will rise up and destroy you.",
+                "Uncertainty is a given. Data helps us manage it.",
+                "You can't eliminate risk, but you can illuminate it with data.",
+                "Decisions made without data are just educated guesses dressed up as strategy.",
+                "To manage risk is to understand the story your data is trying to tell.",
+                "Where there is no data, there is no clarity. Where there is no clarity, there is more risk.",
+                "Risk management is about preparing for the unknown with what you know.",
+                "A bad decision made with good data is still a learning opportunity.",
+                "Not taking a risk is the biggest risk in a data-driven world.",
+                "Every decision involves risk — the smart ones are backed by insight.",
+                "Risk and data go hand in hand; one reveals the danger, the other offers direction.",
+                // 🛡️ Insurance, Safety & Strategy
+                "Vision without data is a dream. Data without vision is chaos.",
+                "To know what you don’t know is the first step toward wisdom — and good data.",
+                "Success is built on smart risks and smarter data.",
+                "Your data is speaking. Are you listening?",
+                "You don't need more data — you need better questions.",
+                "Clarity is the child of good data and great thinking.",
+                "A mindset for data is a mindset for growth."
+            ];
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+            function showQuotePopup() {
+                const quoteIndex = Math.floor(Math.random() * quotes.length);
+                document.getElementById('quote-text').textContent = `"${quotes[quoteIndex]}"`;
+                document.getElementById('quote-popup').style.display = 'block';
+            }
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+            function closeQuotePopup() {
+                document.getElementById('quote-popup').style.display = 'none';
+            }
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-									</ul>
-								</header>
+            // Simple view counter
+            let viewCount = localStorage.getItem('postViewCount') || 0;
+            viewCount++;
+            localStorage.setItem('postViewCount', viewCount);
+            function updateViewCounter() {
+                document.getElementById('post-views').textContent = `This post has been viewed ${viewCount} times.`;
+            }
 
-							<!-- Content -->
-								<section>
-									<header class="main">
-										<h1>Generic</h1>
-									</header>
-
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-
-									<hr class="major" />
-
-									<h2>Interdum sed dapibus</h2>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-
-									<hr class="major" />
-
-									<h2>Magna etiam veroeros</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-
-									<hr class="major" />
-
-									<h2>Lorem aliquam bibendum</h2>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-
-								</section>
-
-						</div>
-					</div>
-
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Search -->
-								<section id="search" class="alt">
-									<form method="post" action="#">
-										<input type="text" name="query" id="query" placeholder="Search" />
-									</form>
-								</section>
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
-									</ul>
-								</nav>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Ante interdum</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section>
-
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
-
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+            // Ensure the functions run on page load
+            window.onload = function () {
+                setTimeout(showQuotePopup, 1000); // Show popup after 1 second
+                updateViewCounter();
+            };
+        </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-E680S7B2S1');
+        </script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+    </body>
 </html>

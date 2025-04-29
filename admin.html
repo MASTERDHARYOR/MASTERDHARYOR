@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Admin Dashboard - Paul The Analyst</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            .admin-dashboard {
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+            }
+
+            .admin-dashboard h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .admin-dashboard h3 {
+                font-size: 22px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            .admin-dashboard table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            .admin-dashboard table th,
+            .admin-dashboard table td {
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: left;
+            }
+
+            .admin-dashboard table th {
+                background-color: #4caf50;
+                color: white;
+            }
+
+            .admin-dashboard ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .admin-dashboard ul li {
+                margin-bottom: 10px;
+            }
+
+            .admin-dashboard button {
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .admin-dashboard button:hover {
+                background-color: #388e3c;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Secure Admin Access -->
+        <script>
+            const adminPassword = "Adesco2345"; // Replace with a secure password
+            const enteredPassword = prompt("Enter admin password:");
+            if (enteredPassword !== adminPassword) {
+                alert("Access denied!");
+                window.location.href = "index.html";
+            }
+        </script>
+        <nav id="menu">
+            <header class="major">
+                <h2>Menu</h2>
+            </header>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="elements.html">Academy & Resources</a></li>
+                <li><a href="admin.html">Admin Dashboard</a></li>
+                <li>
+                    <span class="opener">Submenu</span>
+                    <ul>
+                        <li><a href="#free-courses">Free Courses</a></li>
+                        <li><a href="#paid-courses">Paid Courses</a></li>
+                        <li><a href="#community">Community Forum</a></li>
+                        <li><a href="#events">Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="#quiz">Test Your Knowledge</a></li>
+                <li><a href="#resources">Tools & Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="admin-dashboard">
+            <h2>Admin Dashboard</h2>
+
+            <!-- Site Traffic Section -->
+            <section id="site-traffic">
+                <h3>Site Traffic</h3>
+                <p>Total Visitors: <span id="total-visitors">Loading...</span></p>
+                <p>Real-Time Visitors: <span id="real-time-visitors">Loading...</span></p>
+                <p>Page Views:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Page</th>
+                            <th>Views</th>
+                        </tr>
+                    </thead>
+                    <tbody id="page-views">
+                        <!-- Page view data will be inserted here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- User Engagement Section -->
+            <section id="user-engagement">
+                <h3>User Engagement</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project/Blog</th>
+                            <th>Likes</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="likes-comments">
+                        <!-- Likes and comments data will be inserted here -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Quiz Statistics Section -->
+            <section id="quiz-statistics">
+                <h3>Quiz Statistics</h3>
+                <p>Average Score: <span id="average-score">Loading...</span></p>
+                <p>Top 5 Scores:</p>
+                <ul id="top-scores">
+                    <!-- Top scores will be inserted here -->
+                </ul>
+                <p>Total Quiz Attempts: <span id="quiz-attempts">Loading...</span></p>
+            </section>
+
+            <!-- Recent Comments Section -->
+            <section id="recent-comments">
+                <h3>Recent Comments</h3>
+                <ul id="recent-comments-list">
+                    <!-- Recent comments will be inserted here -->
+                </ul>
+            </section>
+
+            <!-- Export Data Section -->
+            <section id="export-data">
+                <h3>Export Data</h3>
+                <button onclick="exportData()">Export as CSV</button>
+            </section>
+        </div>
+
+        <!-- Dynamic Data Fetching -->
+        <script>
+            // Replace simulated data with API calls or backend integration
+            fetch('/api/traffic-data') // Example API endpoint
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("total-visitors").textContent = data.totalVisitors;
+                    // Populate other sections dynamically
+                })
+                .catch(error => console.error("Error fetching admin data:", error));
+
+            setInterval(() => {
+                fetch('/api/real-time-visitors')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('real-time-visitors').textContent = data.count;
+                    })
+                    .catch(error => console.error('Error fetching real-time visitors:', error));
+            }, 5000); // Update every 5 seconds
+
+            function exportData() {
+                fetch('/api/export-data')
+                    .then(response => response.json())
+                    .then(data => {
+                        const csvContent = [
+                            ['Page', 'Views'],
+                            ...data.pages.map(page => [page.name, page.views]),
+                        ]
+                            .map(row => row.join(','))
+                            .join('\n');
+
+                        const blob = new Blob([csvContent], { type: 'text/csv' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'site-data.csv';
+                        a.click();
+                    })
+                    .catch(error => console.error('Error exporting data:', error));
+            }
+        </script>
+    </body>
+</html>
