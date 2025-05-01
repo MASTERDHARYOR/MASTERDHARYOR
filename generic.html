@@ -168,19 +168,24 @@
         <script>
             // Fetch and display a single post or all posts
             async function fetchPosts() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const postId = urlParams.get('id');
+                try {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const postId = urlParams.get('id');
 
-                if (postId) {
-                    // Fetch a single post by ID
-                    const response = await fetch(`http://localhost:5000/api/posts/${postId}`);
-                    const post = await response.json();
-                    displaySinglePost(post);
-                } else {
-                    // Fetch all posts
-                    const response = await fetch('http://localhost:5000/api/posts');
-                    const posts = await response.json();
-                    displayAllPosts(posts);
+                    if (postId) {
+                        // Fetch a single post by ID
+                        const response = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}`);
+                        const post = await response.json();
+                        displaySinglePost(post);
+                    } else {
+                        // Fetch all posts
+                        const response = await fetch('https://paul-the-analyst.onrender.com/api/posts');
+                        const posts = await response.json();
+                        displayAllPosts(posts);
+                    }
+                } catch (error) {
+                    console.error('Error fetching posts:', error);
+                    document.getElementById('blog-container').innerHTML = '<p>Failed to load posts. Please try again later.</p>';
                 }
             }
 

@@ -6,13 +6,18 @@ const app = express();
 const PORT = 5000;
 
 app.use(bodyParser.json({ limit: '10mb' })); // Allow large payloads for images
-app.use(cors());
+app.use(cors({ origin: '*' })); // Allow all origins
 
 let posts = []; // Temporary in-memory storage
 
+// Default route for the root URL
+app.get('/', (req, res) => {
+    res.send('Backend is running successfully!');
+});
+
 // Fetch all posts
 app.get('/api/posts', (req, res) => {
-    res.json(posts);
+    res.json(posts); // Replace `posts` with your actual data source
 });
 
 // Fetch a single post by ID
@@ -25,7 +30,7 @@ app.get('/api/posts/:id', (req, res) => {
     }
 });
 
-// Add a new post
+// Create a new post
 app.post('/api/posts', (req, res) => {
     const newPost = {
         id: posts.length + 1,
