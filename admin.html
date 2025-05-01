@@ -1,59 +1,177 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
         <title>Admin Dashboard - Paul The Analyst</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <style>
+            /* General Styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f9;
+            }
+
             .admin-dashboard {
                 padding: 20px;
-                background-color: #ffffff;
+                margin-top: 70px; /* Space for the top navigation bar */
+            }
+
+            h2, h3 {
+                color: #333;
+            }
+
+            /* Top Navigation Bar */
+            .top-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: #4caf50;
+                color: white;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .top-nav .logo {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .top-nav ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .top-nav ul li {
+                display: inline;
+            }
+
+            .top-nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                padding: 8px 15px;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            .top-nav ul li a:hover {
+                background-color: #388e3c;
+            }
+
+            /* Card Styles */
+            .card {
+                background-color: white;
                 border-radius: 10px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                font-family: Arial, sans-serif;
-            }
-
-            .admin-dashboard h2 {
-                font-size: 28px;
+                padding: 20px;
                 margin-bottom: 20px;
             }
 
-            .admin-dashboard h3 {
-                font-size: 22px;
-                margin-top: 30px;
-                margin-bottom: 10px;
+            .card h3 {
+                margin-bottom: 15px;
+                font-size: 20px;
             }
 
-            .admin-dashboard table {
+            .card p {
+                font-size: 16px;
+                color: #555;
+            }
+
+            .card table {
                 width: 100%;
                 border-collapse: collapse;
-                margin-bottom: 20px;
+                margin-top: 10px;
             }
 
-            .admin-dashboard table th,
-            .admin-dashboard table td {
+            .card table th,
+            .card table td {
                 border: 1px solid #ddd;
                 padding: 10px;
                 text-align: left;
             }
 
-            .admin-dashboard table th {
+            .card table th {
                 background-color: #4caf50;
                 color: white;
             }
 
-            .admin-dashboard ul {
+            .card ul {
                 list-style: none;
                 padding: 0;
             }
 
-            .admin-dashboard ul li {
+            .card ul li {
                 margin-bottom: 10px;
+                font-size: 16px;
             }
 
-            .admin-dashboard button {
+            /* Button Styles */
+            .button {
+                display: inline-block;
                 padding: 10px 20px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                text-decoration: none;
+                text-align: center;
+            }
+
+            .button:hover {
+                background-color: #388e3c;
+            }
+
+            /* Login Modal Styles */
+            .login-modal {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+            }
+
+            .login-modal-content {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                width: 300px;
+            }
+
+            .login-modal-content h2 {
+                margin-bottom: 20px;
+            }
+
+            .login-modal-content input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .login-modal-content button {
+                width: 100%;
+                padding: 10px;
                 background-color: #4caf50;
                 color: white;
                 border: none;
@@ -62,10 +180,19 @@
                 font-size: 16px;
             }
 
-            .admin-dashboard button:hover {
+            .login-modal-content button:hover {
                 background-color: #388e3c;
             }
+
+            #editor-container {
+                height: 200px;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 10px;
+            }
         </style>
+        <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Secure Admin Access -->
@@ -77,33 +204,28 @@
                 window.location.href = "index.html";
             }
         </script>
-        <nav id="menu">
-            <header class="major">
-                <h2>Menu</h2>
-            </header>
+
+        <!-- Top Navigation Bar -->
+        <div class="top-nav">
+            <div class="logo">Admin Dashboard</div>
             <ul>
+                <li><a href="create-post.html">Create Post</a></li>
                 <li><a href="index.html">Homepage</a></li>
                 <li><a href="elements.html">Academy & Resources</a></li>
-                <li><a href="admin.html">Admin Dashboard</a></li>
-                <li>
-                    <span class="opener">Submenu</span>
-                    <ul>
-                        <li><a href="#free-courses">Free Courses</a></li>
-                        <li><a href="#paid-courses">Paid Courses</a></li>
-                        <li><a href="#community">Community Forum</a></li>
-                        <li><a href="#events">Events</a></li>
-                    </ul>
-                </li>
-                <li><a href="#quiz">Test Your Knowledge</a></li>
-                <li><a href="#resources">Tools & Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#site-traffic">Site Traffic</a></li>
+                <li><a href="#user-engagement">User Engagement</a></li>
+                <li><a href="#quiz-statistics">Quiz Statistics</a></li>
+                <li><a href="#recent-comments">Recent Comments</a></li>
+                <li><a href="#export-data">Export Data</a></li>
             </ul>
-        </nav>
+        </div>
+
+        <!-- Admin Dashboard -->
         <div class="admin-dashboard">
             <h2>Admin Dashboard</h2>
 
             <!-- Site Traffic Section -->
-            <section id="site-traffic">
+            <div class="card" id="site-traffic">
                 <h3>Site Traffic</h3>
                 <p>Total Visitors: <span id="total-visitors">Loading...</span></p>
                 <p>Real-Time Visitors: <span id="real-time-visitors">Loading...</span></p>
@@ -119,10 +241,10 @@
                         <!-- Page view data will be inserted here -->
                     </tbody>
                 </table>
-            </section>
+            </div>
 
             <!-- User Engagement Section -->
-            <section id="user-engagement">
+            <div class="card" id="user-engagement">
                 <h3>User Engagement</h3>
                 <table>
                     <thead>
@@ -136,10 +258,10 @@
                         <!-- Likes and comments data will be inserted here -->
                     </tbody>
                 </table>
-            </section>
+            </div>
 
             <!-- Quiz Statistics Section -->
-            <section id="quiz-statistics">
+            <div class="card" id="quiz-statistics">
                 <h3>Quiz Statistics</h3>
                 <p>Average Score: <span id="average-score">Loading...</span></p>
                 <p>Top 5 Scores:</p>
@@ -147,24 +269,83 @@
                     <!-- Top scores will be inserted here -->
                 </ul>
                 <p>Total Quiz Attempts: <span id="quiz-attempts">Loading...</span></p>
-            </section>
+            </div>
 
             <!-- Recent Comments Section -->
-            <section id="recent-comments">
+            <div class="card" id="recent-comments">
                 <h3>Recent Comments</h3>
                 <ul id="recent-comments-list">
                     <!-- Recent comments will be inserted here -->
                 </ul>
-            </section>
+            </div>
 
             <!-- Export Data Section -->
-            <section id="export-data">
+            <div class="card" id="export-data">
                 <h3>Export Data</h3>
-                <button onclick="exportData()">Export as CSV</button>
-            </section>
+                <button class="button" onclick="exportData()">Export as CSV</button>
+            </div>
+
+            <!-- Create a New Post Section -->
+            <div class="card">
+                <h3>Create a New Post</h3>
+                <form id="create-post-form">
+                    <label for="post-title">Title:</label>
+                    <input type="text" id="post-title" required />
+
+                    <label for="post-description">Description:</label>
+                    <textarea id="post-description" required></textarea>
+
+                    <label for="post-content">Content:</label>
+                    <div id="editor-container"></div> <!-- Rich text editor -->
+
+                    <label for="post-image">Image:</label>
+                    <input type="file" id="post-image" accept="image/*" />
+
+                    <button type="button" onclick="savePost()">Post</button>
+                </form>
+            </div>
+
+            <!-- Edit an Existing Post Section -->
+            <div class="card">
+                <h3>Edit an Existing Post</h3>
+                <form id="edit-post-form">
+                    <label for="edit-post-id">Select Post:</label>
+                    <select id="edit-post-id" onchange="loadPostForEditing()">
+                        <!-- Posts will be dynamically loaded here -->
+                    </select>
+
+                    <label for="edit-post-title">Title:</label>
+                    <input type="text" id="edit-post-title" required />
+
+                    <label for="edit-post-description">Description:</label>
+                    <textarea id="edit-post-description" required></textarea>
+
+                    <label for="edit-post-content">Content:</label>
+                    <div id="edit-editor-container"></div> <!-- Rich text editor -->
+
+                    <label for="edit-post-image">Image:</label>
+                    <input type="file" id="edit-post-image" accept="image/*" />
+
+                    <button type="button" onclick="updatePost()">Update Post</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="login-modal" class="login-modal">
+            <div class="login-modal-content">
+                <h2>Admin Login</h2>
+                <form id="login-form">
+                    <label for="admin-password">Password:</label>
+                    <input type="password" id="admin-password" placeholder="Enter your password" required />
+                    <button type="button" onclick="validateLogin()">Login</button>
+                </form>
+                <p id="login-error" style="color: red; display: none;">Invalid password. Please try again.</p>
+            </div>
         </div>
 
         <!-- Dynamic Data Fetching -->
+        <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
         <script>
             // Replace simulated data with API calls or backend integration
             fetch('/api/traffic-data') // Example API endpoint
@@ -203,6 +384,146 @@
                         a.click();
                     })
                     .catch(error => console.error('Error exporting data:', error));
+            }
+
+            // Initialize Quill rich text editor
+            const quill = new Quill('#editor-container', {
+                theme: 'snow',
+                placeholder: 'Write your post content here...',
+            });
+
+            // Save post to the backend
+            async function savePost() {
+                const title = document.getElementById('post-title').value;
+                const description = document.getElementById('post-description').value;
+                const content = quill.root.innerHTML; // Get content from Quill editor
+                const imageInput = document.getElementById('post-image');
+                let image = '';
+
+                console.log('Saving post:', { title, description, content }); // Debugging log
+
+                if (imageInput.files.length > 0) {
+                    const reader = new FileReader();
+                    reader.onload = async function (e) {
+                        image = e.target.result;
+                        console.log('Image uploaded:', image); // Debugging log
+                        await addPost(title, description, content, image);
+                    };
+                    reader.readAsDataURL(imageInput.files[0]);
+                } else {
+                    await addPost(title, description, content);
+                }
+            }
+
+            // Add post to the backend
+            async function addPost(title, description, content, image = '') {
+                try {
+                    const response = await fetch('http://localhost:5000/api/posts', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ title, description, content, image }),
+                    });
+
+                    if (response.ok) {
+                        alert('Post created successfully!');
+                        document.getElementById('create-post-form').reset();
+                        quill.setContents([]); // Clear the editor
+                    } else {
+                        alert('Failed to create post.');
+                    }
+                } catch (error) {
+                    console.error('Error creating post:', error);
+                }
+            }
+
+            // Validate admin login
+            function validateLogin() {
+                const adminPassword = "Adesco2345"; // Replace with a secure password
+                const enteredPassword = document.getElementById('admin-password').value;
+
+                if (enteredPassword === adminPassword) {
+                    document.getElementById('login-modal').style.display = 'none'; // Hide login modal
+                } else {
+                    document.getElementById('login-error').style.display = 'block'; // Show error message
+                }
+            }
+
+            // Show login modal on page load
+            window.onload = function () {
+                document.getElementById('login-modal').style.display = 'flex';
+                loadPostsForDropdown();
+            };
+
+            // Initialize Quill editor for editing
+            const editQuill = new Quill('#edit-editor-container', {
+                theme: 'snow',
+                placeholder: 'Edit your post content here...',
+            });
+
+            // Fetch all posts for the dropdown
+            async function loadPostsForDropdown() {
+                const response = await fetch('http://localhost:5000/api/posts');
+                const posts = await response.json();
+                const dropdown = document.getElementById('edit-post-id');
+                dropdown.innerHTML = posts
+                    .map((post) => `<option value="${post.id}">${post.title}</option>`)
+                    .join('');
+            }
+
+            // Load a post's data into the form for editing
+            async function loadPostForEditing() {
+                const postId = document.getElementById('edit-post-id').value;
+                const response = await fetch(`http://localhost:5000/api/posts/${postId}`);
+                const post = await response.json();
+
+                document.getElementById('edit-post-title').value = post.title;
+                document.getElementById('edit-post-description').value = post.description;
+                editQuill.root.innerHTML = post.content; // Load content into Quill editor
+            }
+
+            // Update the post
+            async function updatePost() {
+                const postId = document.getElementById('edit-post-id').value;
+                const title = document.getElementById('edit-post-title').value;
+                const description = document.getElementById('edit-post-description').value;
+                const content = editQuill.root.innerHTML; // Get content from Quill editor
+                const imageInput = document.getElementById('edit-post-image');
+                let image = '';
+
+                if (imageInput.files.length > 0) {
+                    const reader = new FileReader();
+                    reader.onload = async function (e) {
+                        image = e.target.result;
+                        await sendUpdateRequest(postId, title, description, content, image);
+                    };
+                    reader.readAsDataURL(imageInput.files[0]);
+                } else {
+                    await sendUpdateRequest(postId, title, description, content);
+                }
+            }
+
+            // Send the update request to the backend
+            async function sendUpdateRequest(postId, title, description, content, image = '') {
+                try {
+                    const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ title, description, content, image }),
+                    });
+
+                    if (response.ok) {
+                        alert('Post updated successfully!');
+                        loadPostsForDropdown(); // Refresh the dropdown
+                    } else {
+                        alert('Failed to update post.');
+                    }
+                } catch (error) {
+                    console.error('Error updating post:', error);
+                }
             }
         </script>
     </body>

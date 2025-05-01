@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
         <title>PAUL THE ANALYST</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Paul The Analyst - A portfolio showcasing data analytics expertise, projects, and blog posts.">
         <meta name="keywords" content="Data Analytics, Python, SQL, Power BI, Portfolio, Blog">
         <meta name="author" content="Paul Adedayo Sanni">
@@ -12,21 +12,30 @@
 
         <!-- Custom Styles -->
         <style>
+            :root {
+                --primary-color: #b0b8b0;
+                --secondary-color: #414c50;
+                --background-color: #f9f9f9;
+                --text-color: #333;
+            }
+
             html {
                 scroll-behavior: smooth;
             }
             body {
-                background: #f9f9f9 url('https://www.transparenttextures.com/patterns/white-diamond.png');
+                background: var(--background-color);
+                color: var(--text-color);
+                font-family: 'Roboto', Arial, sans-serif;
             }
             /* Popup Styling */
             .quote-popup {
-                display: none;
+                display: none; /* Initially hidden */
                 position: fixed;
                 bottom: 0;
                 left: 0;
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.9); /* Dark background */
-                color: #ffffff;
+                background-color: var(--primary-color);
+                color: var(--accent-color);
                 padding: 20px;
                 box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
                 z-index: 1000;
@@ -42,7 +51,7 @@
             }
             .quote-popup-content button {
                 padding: 10px 20px;
-                background-color: #4caf50; /* Green button */
+                background-color: var(--primary-color); /* Green button */
                 color: #ffffff;
                 border: none;
                 border-radius: 5px;
@@ -51,7 +60,7 @@
                 transition: background-color 0.3s ease;
             }
             .quote-popup-content button:hover {
-                background-color: #388e3c; /* Darker green on hover */
+                background-color: var(--secondary-color); /* Darker green on hover */
             }
 
             /* Slide-In Animation */
@@ -70,7 +79,7 @@
                 color: #ffffff;
             }
             body.dark-mode a {
-                color: #4caf50;
+                color: var(--primary-color);
             }
 
             /* Contact Section Styling */
@@ -106,11 +115,13 @@
 
             /* Button Hover Effect */
             .button {
+                background-color: var(--primary-color);
+                color: #ffffff;
                 transition: background-color 0.3s ease, transform 0.3s ease;
             }
 
             .button:hover {
-                background-color: #4caf50; /* Change to a green shade */
+                background-color: var(--secondary-color); /* Change to a green shade */
                 transform: scale(1.05); /* Slightly enlarge the button */
             }
 
@@ -140,75 +151,262 @@
                     text-align: center;
                 }
             }
+
+            .engagement {
+                margin-top: 10px;
+                font-size: 14px;
+                color: #555;
+            }
+
+            .engagement p {
+                margin: 5px 0;
+            }
+
+            .project-list {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .project {
+                background-color: #ffffff;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                cursor: pointer;
+                transition: box-shadow 0.3s ease;
+            }
+
+            .project:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .project .short-description {
+                margin: 0;
+                font-size: 14px;
+                color: #555;
+            }
+
+            .project .project-details {
+                display: none;
+                margin-top: 10px;
+                font-size: 14px;
+                color: #333;
+            }
+
+            /* Modern Quote Popup Styling */
+            .modern-quote-popup {
+                display: none; /* Initially hidden */
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-width: 500px;
+                background-color: #ffffff;
+                color: #333333;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+
+            .modern-quote-popup-content {
+                text-align: center;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .modern-quote-popup-actions {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .modern-quote-popup-actions .button {
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+
+            .modern-quote-popup-actions .button:hover {
+                transform: scale(1.05);
+            }
+
+            .modern-quote-popup-actions .button.secondary {
+                background-color: #f44336; /* Red for close button */
+                color: #ffffff;
+            }
+
+            .modern-quote-popup-actions .button.secondary:hover {
+                background-color: #d32f2f;
+            }
+
+            .modern-quote-popup-actions .button {
+                background-color: var(--primary-color); /* Green for next button */
+                color: #ffffff;
+            }
+
+            .modern-quote-popup-actions .button:hover {
+                background-color: var(--secondary-color);
+            }
+
+            /* Blur Effect for Background */
+            body.blur {
+                filter: blur(5px);
+                pointer-events: none;
+            }
+
+            /* Fade-In Animation */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translate(-50%, -60%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            /* Fade-Out Animation */
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                    transform: translate(-50%, -50%);
+                }
+                to {
+                    opacity: 0;
+                    transform: translate(-50%, -60%);
+                }
+            }
+
+            /* Short Quote Popup Styling */
+            .short-quote-popup {
+                display: none; /* Initially hidden */
+                position: fixed;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 600px;
+                background-color: var(--primary-color);
+                color: var(--accent-color);
+                padding: 10px 20px;
+                border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+                text-align: center;
+                font-size: 16px;
+                font-weight: bold;
+                animation: slideDown 0.5s ease-in-out;
+            }
+
+            /* Button inside the popup */
+            .short-quote-popup .button {
+                margin-top: 10px;
+                background-color: var(--secondary-color);
+                color: #ffffff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: background-color 0.3s ease;
+            }
+
+            .short-quote-popup .button:hover {
+                background-color: var(--accent-color);
+                color: var(--primary-color);
+            }
+
+            /* Slide-Down Animation */
+            @keyframes slideDown {
+                from {
+                    transform: translateX(-50%) translateY(-100%);
+                }
+                to {
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
         </style>
 
         <!-- JavaScript -->
         <script>
             // Quotes array
-            const quotes = [
-                // 🔍 Data & Analytics
-                "Data is the new oil – but like oil, it must be refined to have value.",
-                "The goal is to turn data into information, and information into insight.",
-                "Without data, you're just another person with an opinion.",
-                "In God we trust, all others bring data.",
-                "Big data isn’t about the data, it’s about the insights you derive from it.",
-                "Data analysis is the art of making sense out of chaos.",
-                "If you can’t measure it, you can’t improve it.",
-                "Data is a tool for enhancing intuition.",
-                "The data scientist is the new Renaissance person.",
-                "Life is about data: You don’t have to predict the future, just prepare for it with the right data.",
-                "Data helps turn questions into answers and possibilities into actions.",
-                "The more data you have, the more informed decisions you can make.",
-                "Sometimes the best data point is not the one you collect, but the one you didn't need.",
-                "In the world of data analysis, there is no failure, only feedback.",
-                "There is no perfect data, just better analysis.",
-                "Data-driven decisions are the most reliable and objective.",
-                "The essence of data science is in the questions, not the data.",
-                "It’s not the data, it’s how you interpret it.",
-                "In the end, data is not about numbers, but about the insights it reveals.",
-                "Data doesn’t lie, but interpretations can.",
-                "Data is the bridge between questions and answers.",
-                "The power of data lies in its ability to tell stories.",
-                "Data is the foundation of innovation and progress.",
-                "Every data point is a clue; every pattern is a possibility.",
-                "We are drowning in data but starving for insight.",
+const quotes = [
+    "Data is the new oil – but like oil, it must be refined to have value.",
+    "Without data, you're just another person with an opinion.",
+    "The goal is to turn data into information, and information into insight.",
+    "In God we trust, all others bring data.",
+    "Big data isn’t about the data, it’s about the insights you derive from it.",
+    "Data analysis is the art of making sense out of chaos.",
+    "If you can’t measure it, you can’t improve it.",
+    "Data is a tool for enhancing intuition.",
+    "The data scientist is the new Renaissance person.",
+    "Your data is speaking. Are you listening?",
+    "Data helps turn questions into answers and possibilities into actions.",
+    "The more data you have, the more informed decisions you can make.",
+    "Sometimes the best data point is not the one you collect, but the one you didn't need.",
+    "In the world of data analysis, there is no failure, only feedback.",
+    "There is no perfect data, just better analysis.",
+    "Data-driven decisions are the most reliable and objective.",
+    "The essence of data science is in the questions, not the data.",
+    "It’s not the data, it’s how you interpret it.",
+    "In the end, data is not about numbers, but about the insights it reveals.",
+    "Data doesn’t lie, but interpretations can.",
+    "Insurance is the safety net that catches you when life throws the unexpected.",
+    "The best time to buy insurance is before you need it.",
+    "Insurance is not a cost; it’s an investment in peace of mind.",
+    "Protecting your future starts with the right insurance today.",
+    "Insurance is the bridge between uncertainty and security.",
+    "A small premium today can save you from a big loss tomorrow.",
+    "Insurance is the promise that life’s risks won’t derail your dreams.",
+    "The value of insurance is realized when the unexpected happens.",
+    "Insurance is the foundation of financial stability.",
+    "A good insurance policy is like a good friend – always there when you need it.",
+    "Life is unpredictable, but insurance makes it manageable.",
+    "Insurance is the umbrella you need before it starts raining.",
+    "The cost of not having insurance is often greater than the cost of having it.",
+    "Insurance is not about fear; it’s about preparation.",
+    "A secure future starts with the right coverage today.",
+    "Insurance is the silent guardian of your financial well-being.",
+    "The best insurance policy is the one that protects what matters most.",
+    "Insurance is the safety belt for life’s unexpected turns.",
+    "You can’t predict the future, but you can prepare for it with insurance.",
+    "Insurance is the peace of mind that lets you live boldly.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "The only limit to our realization of tomorrow will be our doubts of today.",
+    "Don’t watch the clock; do what it does. Keep going.",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Dream big, work hard, stay focused, and surround yourself with good people.",
+    "Success doesn’t come from what you do occasionally, it comes from what you do consistently.",
+    "The future belongs to those who believe in the beauty of their dreams.",
+    "Don’t be afraid to give up the good to go for the great.",
+    "Your limitation—it’s only your imagination.",
+    "Great things never come from comfort zones."
+];
 
-                // ⚖️ Risk & Decision-Making
-                "Risk comes from not knowing what you’re doing. — Warren Buffett",
-                "A data-driven organization is a risk-aware organization.",
-                "Risk is the price you pay for opportunity.",
-                "The purpose of risk management is not to eliminate risk, but to understand it.",
-                "Risk is like fire: If controlled it will help you; if uncontrolled it will rise up and destroy you.",
-                "Uncertainty is a given. Data helps us manage it.",
-                "You can't eliminate risk, but you can illuminate it with data.",
-                "Decisions made without data are just educated guesses dressed up as strategy.",
-                "To manage risk is to understand the story your data is trying to tell.",
-                "Where there is no data, there is no clarity. Where there is no clarity, there is more risk.",
-                "Risk management is about preparing for the unknown with what you know.",
-                "A bad decision made with good data is still a learning opportunity.",
-                "Not taking a risk is the biggest risk in a data-driven world.",
-                "Every decision involves risk — the smart ones are backed by insight.",
-                "Risk and data go hand in hand; one reveals the danger, the other offers direction.",
-
-                // 🛡️ Insurance, Safety & Strategy
-                "Vision without data is a dream. Data without vision is chaos.",
-                "To know what you don’t know is the first step toward wisdom — and good data.",
-                "Success is built on smart risks and smarter data.",
-                "Your data is speaking. Are you listening?",
-                "You don't need more data — you need better questions.",
-                "Clarity is the child of good data and great thinking.",
-                "A mindset for data is a mindset for growth."
-            ];
-
+            // Show the quote popup
             function showQuotePopup() {
                 const quoteIndex = Math.floor(Math.random() * quotes.length);
                 document.getElementById('quote-text').textContent = `"${quotes[quoteIndex]}"`;
-                document.getElementById('quote-popup').style.display = 'block';
+                const popup = document.getElementById('quote-popup');
+                popup.style.display = 'block';
+
+                // Automatically hide the popup after 30 seconds
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 30000); // 30 seconds
             }
 
-            function closeQuotePopup() {
-                document.getElementById('quote-popup').style.display = 'none';
-            }
+            // Show the popup after 1 second
+            window.onload = function () {
+                setTimeout(showQuotePopup, 1000); // Show the popup after 1 second
+            };
 
             // Simple view counter
             let viewCount = localStorage.getItem('postViewCount') || 0;
@@ -224,13 +422,198 @@
                 setTimeout(showQuotePopup, 1000); // Show popup after 1 second
                 updateViewCounter();
             };
+
+            // WordPress API URL
+            const wordpressApiUrl = "https://masterblogspot.wordpress.com/wp-json/wp/v2/posts";
+
+            // Fetch engagement data for projects
+            fetch(wordpressApiUrl)
+                .then(response => response.json())
+                .then(posts => {
+                    // Map each post to its corresponding project
+                    posts.forEach(post => {
+                        // Example: Match post by title or slug
+                        if (post.title.rendered.includes("Conversion Rate Strategies")) {
+                            // Update likes and comments for the project
+                            document.getElementById("likes-project-1").textContent = post.like_count || "0";
+                            document.getElementById("comments-project-1").textContent = post.comment_count || "0";
+                        }
+                        // Repeat for other projects
+                    });
+                })
+                .catch(error => console.error("Error fetching WordPress data:", error));
+
+            fetch(wordpressApiUrl)
+                .then(response => response.json())
+                .then(posts => {
+                    console.log(posts); // Process the posts as needed
+                })
+                .catch(error => console.error('Error fetching WordPress data:', error));
+
+            function savePost() {
+                const title = document.getElementById('post-title').value;
+                const description = document.getElementById('post-description').value;
+                const content = document.getElementById('post-content').value;
+
+                // Simulate saving the post (you can replace this with a backend API call)
+                const post = {
+                    title,
+                    description,
+                    content,
+                    date: new Date().toISOString(),
+                };
+
+                console.log('Post saved:', post);
+                alert('Post saved successfully!');
+            }
+
+            function toggleProjectDetails(projectElement) {
+                const details = projectElement.querySelector('.project-details');
+                details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            }
+
+            fetch('projects.json') // Replace with your backend API endpoint
+                .then(response => response.json())
+                .then(projects => {
+                    const projectList = document.querySelector('.project-list');
+                    projects.forEach(project => {
+                        const projectElement = document.createElement('div');
+                        projectElement.classList.add('project');
+                        projectElement.innerHTML = `
+                            <h3>${project.title}</h3>
+                            <p class="short-description">${project.description}</p>
+                            <div class="project-details">
+                                <p>${project.content}</p>
+                                <p><strong>Likes:</strong> ${project.likes}</p>
+                                <p><strong>Comments:</strong> ${project.comments}</p>
+                                <a href="${project.link}" class="button">View Project</a>
+                            </div>
+                        `;
+                        projectElement.addEventListener('click', () => toggleProjectDetails(projectElement));
+                        projectList.appendChild(projectElement);
+                    });
+                })
+                .catch(error => console.error('Error loading projects:', error));
+
+            document.getElementById('close-quote-popup').addEventListener('click', () => {
+                document.getElementById('quote-popup').style.display = 'none';
+            });
+
+            document.getElementById('close-short-quote-popup').addEventListener('click', () => {
+                document.getElementById('short-quote-popup').style.display = 'none';
+            });
+
+            // Quotes array
+            const shortQuotes = [
+            "Data is the new oil – but like oil, it must be refined to have value.",
+    "The goal is to turn data into information, and information into insight.",
+    "Without data, you're just another person with an opinion.",
+    "In God we trust, all others bring data.",
+    "Big data isn’t about the data, it’s about the insights you derive from it.",
+    "Data analysis is the art of making sense out of chaos.",
+    "If you can’t measure it, you can’t improve it.",
+    "Data is a tool for enhancing intuition.",
+    "The data scientist is the new Renaissance person.",
+    "Life is about data: You don’t have to predict the future, just prepare for it with the right data.",
+    "Data helps turn questions into answers and possibilities into actions.",
+    "The more data you have, the more informed decisions you can make.",
+    "Sometimes the best data point is not the one you collect, but the one you didn't need.",
+    "In the world of data analysis, there is no failure, only feedback.",
+    "There is no perfect data, just better analysis.",
+    "Data-driven decisions are the most reliable and objective.",
+    "The essence of data science is in the questions, not the data.",
+    "It’s not the data, it’s how you interpret it.",
+    "In the end, data is not about numbers, but about the insights it reveals.",
+    "Data doesn’t lie, but interpretations can.",
+    "Data is the bridge between questions and answers.",
+    "The power of data lies in its ability to tell stories.",
+    "Data is the foundation of innovation and progress.",
+    "Every data point is a clue; every pattern is a possibility.",
+    "We are drowning in data but starving for insight.",
+    "Risk comes from not knowing what you’re doing. — Warren Buffett",
+    "A data-driven organization is a risk-aware organization.",
+    "Risk is the price you pay for opportunity.",
+    "The purpose of risk management is not to eliminate risk, but to understand it.",
+    "Risk is like fire: If controlled it will help you; if uncontrolled it will rise up and destroy you.",
+    "Uncertainty is a given. Data helps us manage it.",
+    "You can't eliminate risk, but you can illuminate it with data.",
+    "Decisions made without data are just educated guesses dressed up as strategy.",
+    "To manage risk is to understand the story your data is trying to tell.",
+    "Where there is no data, there is no clarity. Where there is no clarity, there is more risk.",
+    "Risk management is about preparing for the unknown with what you know.",
+    "A bad decision made with good data is still a learning opportunity.",
+    "Not taking a risk is the biggest risk in a data-driven world.",
+    "Every decision involves risk — the smart ones are backed by insight.",
+    "Risk and data go hand in hand; one reveals the danger, the other offers direction.",
+    "Vision without data is a dream. Data without vision is chaos.",
+    "To know what you don’t know is the first step toward wisdom — and good data.",
+    "Success is built on smart risks and smarter data.",
+    "Your data is speaking. Are you listening?",
+    "You don't need more data — you need better questions.",
+    "Clarity is the child of good data and great thinking.",
+    "A mindset for data is a mindset for growth."
+            ];
+
+            // Show the short quote popup
+            function showQuotePopup() {
+                const quoteIndex = Math.floor(Math.random() * quotes.length);
+                document.getElementById('quote-text').textContent = `"${quotes[quoteIndex]}"`;
+                const popup = document.getElementById('quote-popup');
+                popup.style.display = 'block';
+            
+                // Automatically hide the popup after 30 seconds
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 5000); // 30 seconds
+            }
+            
+            // Close the quote popup manually
+            document.getElementById('close-quote-popup').addEventListener('click', () => {
+                document.getElementById('quote-popup').style.display = 'none';
+            });
+            
+            // Show the popup after 1 second
+            window.onload = function () {
+                setTimeout(showQuotePopup, 1000); // Show the popup after 1 second
+            };
+
+            // Fetch posts from the backend
+            async function fetchPosts() {
+                try {
+                    const response = await fetch('http://localhost:5000/api/posts');
+                    const posts = await response.json();
+                    displayProjects(posts);
+                } catch (error) {
+                    console.error('Error fetching posts:', error);
+                }
+            }
+
+            // Display posts in the Projects section
+            function displayProjects(posts) {
+                const projectList = document.getElementById('project-list');
+                projectList.innerHTML = '';
+
+                posts.forEach((post) => {
+                    const projectElement = document.createElement('div');
+                    projectElement.classList.add('project');
+                    projectElement.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <p class="short-description">${post.description}</p>
+                        <a href="generic.html?id=${post.id}" class="button">View Full Details</a>
+                    `;
+                    projectList.appendChild(projectElement);
+                });
+            }
+
+            // Load posts on page load
+            window.onload = fetchPosts;
         </script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'YOUR_TRACKING_ID');
+            gtag('config', 'G-E680S7B2S1');
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
         <script>
@@ -259,7 +642,7 @@
                         <a href="index.html" class="logo"><strong>PAUL</strong> THE ANALYST</a>
                         <ul class="icons">
                             <li><a href="https://x.com/SanniPaul232" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://www.linkedin.com/in/paul-sanni-252160220/" class="icon brands fa-linkedin-f" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
                             <li><a href="https://www.instagram.com/pauladedayosanni/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
                             <li><a href="https://github.com/MASTERDHARYOR" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
                             <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
@@ -280,7 +663,7 @@
                             </ul>
                         </div>
                         <span class="image object">
-                            <img src="images/2NEWTTITLE.gif" alt="" />
+                            <img src="images/2NEWTTITLE.gif" alt="Paul The Analyst Banner" />
                         </span>
                     </section>
 
@@ -340,75 +723,9 @@
 
                     <!-- Projects Section -->
                     <section id="projects">
-                        <header class="major">
-                            <h2>Projects & Case Studies</h2>
-                        </header>
-                        <div class="filters">
-                            <button onclick="filterProjects('all')">All</button>
-                            <button onclick="filterProjects('data-analysis')">Data Analysis</button>
-                            <button onclick="filterProjects('dashboards')">Dashboards</button>
-                        </div>
-                        <div class="posts" id="project-list">
-                            <article>
-                                <a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="project-card data-analysis">
-                                    <img src="images/marketing.jpg" alt="Marketing Campaign Analysis" style="max-width: 100%; height: auto;">
-                                    <h3>Marketing Campaign Analysis</h3>
-                                    <p>Analyzed a marketing campaign's performance using Power BI to track conversion rates and ROI. Developed insights that helped refine the company’s future campaign strategies.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://github.com/MASTERDHARYOR/Marketing-Campaign-Dashboard" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="https://masterblogspot.wordpress.com/2025/04/24/conversion-rate-strategies-from-user-behavior-analysis/" class="project-card data-analysis">
-                                    <img src="images/hgh.png" alt="Conversion Rate Strategies from User Behavior Analysis" style="max-width: 100%; height: auto;">
-                                    <h3>Conversion Rate Strategies from User Behavior Analysis</h3>
-                                    <p>Analyzed user behavior data to develop actionable strategies for improving conversion rates. Delivered insights to optimize user experiences and drive results.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/24/conversion-rate-strategies-from-user-behavior-analysis/" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="project-card data-analysis">
-                                    <img src="images/DASH3.png" alt="Unified Consumer Behavior & Revenue Insights Report" style="max-width: 100%; height: auto;">
-                                    <h3>Unified Consumer Behavior & Revenue Insights Report</h3>
-                                    <p>Generated actionable insights into consumer behavior and revenue trends using Python and Power BI, enabling data-driven decision-making for businesses.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://github.com/MASTERDHARYOR/Unified-Consumer-Behavior-Revenue-Insights-Report" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="project-card data-analysis">
-                                    <img src="images/Jamb.png" alt="JAMB Exam Performance Analysis" style="max-width: 100%; height: auto;">
-                                    <h3>JAMB Exam Performance Analysis</h3>
-                                    <p>Explored how school type, teacher quality, and study habits impact JAMB performance. Visualized insights using Power BI to guide educational improvements.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://github.com/MASTERDHARYOR/Jamb-Exam-Peformance-Aanalysis" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
-                            <article>
-                                <a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="project-card dashboards">
-                                    <img src="images/call center.png" alt="Call Centre Performance Metrics" style="max-width: 100%; height: auto;">
-                                    <h3>Call Centre Performance Metrics</h3>
-                                    <p>Provided a comprehensive analysis of call center performance using Power BI, focusing on key metrics like agent efficiency, customer satisfaction, and call resolution trends.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://github.com/MASTERDHARYOR/Call-Centre-Performance-Dashboard/blob/main/README.md" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
-                            <article class="project-card data-analysis">
-                                <a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="project-card data-analysis">
-                                    <img src="images/Bike 2.png" alt="Customer Insights for Strategic Bike Sales Growth" style="max-width: 100%; height: auto;">
-                                    <h3>Customer Insights for Strategic Bike Sales Growth</h3>
-                                    <p>Analyzed customer demographics, behavior, and socio-economic factors to provide actionable insights for strategic bike sales growth.</p>
-                                    <ul class="actions">
-                                        <li><a href="https://masterblogspot.wordpress.com/2025/04/27/customer-insights-for-strategic-bike-sales-growth/" class="button">View Project</a></li>
-                                    </ul>
-                                </a>
-                            </article>
+                        <h2>My Projects</h2>
+                        <div id="project-list">
+                            <!-- Projects will be dynamically loaded here -->
                         </div>
                     </section>
 
@@ -464,23 +781,23 @@
                             <p>Check out my latest blog posts below, or visit my blog for more insights!</p>
                             <div id="latest-posts">
                                 <!-- First Blog Post -->
-                                <a href="https://masterblogspot.wordpress.com/2025/04/07/from-self-development-to-data-why-im-merging-both-on-this-blog/" target="_blank">
+                                <a href="https://masterblogspot.wordpress.com/2025/04/07/from-self-development-to-data-why-im-merging-both-on-this-blog/" target="_blank" rel="noopener">
                                     <h3>From Self-Development to Data: Why I’m Merging Both on This Blog</h3>
                                     <p>Discover how self-development and data analytics intersect in this exciting new post. Learn why merging these two fields can lead to powerful insights and personal growth.</p>
                                 </a>
                                 <!-- Second Blog Post -->
-                                <a href="https://masterblogspot.wordpress.com/2019/11/19/building-the-total-youth/" target="_blank">
+                                <a href="https://masterblogspot.wordpress.com/2019/11/19/building-the-total-youth/" target="_blank" rel="noopener">
                                     <h3>Building the Total Youth</h3>
                                     <p>Explore the principles of building a well-rounded youth, focusing on personal development, leadership, and the power of purpose.</p>
                                 </a>
                                 <!-- Third Blog Post -->
-                                <a href="https://masterblogspot.wordpress.com/2025/04/10/my-journey-to-a-4-0-cgpa-lessons-in-resilience/" target="_blank">
+                                <a href="https://masterblogspot.wordpress.com/2025/04/10/my-journey-to-a-4-0-cgpa-lessons-in-resilience/" target="_blank" rel="noopener">
                                     <h3>My Journey to a 4.0 CGPA: Lessons in Resilience</h3>
                                     <p>Learn about the challenges, strategies, and lessons I embraced on my journey to achieving a 4.0 CGPA. A story of resilience and determination.</p>
                                 </a>
                             </div>
                             <ul class="actions">
-                                <li><a href="https://masterblogspot.wordpress.com" class="button" target="_blank">Visit My Blog</a></li>
+                                <li><a href="https://masterblogspot.wordpress.com" class="button" target="_blank" rel="noopener">Visit My Blog</a></li>
                         </div>
                     </section>
 
@@ -529,6 +846,46 @@
                                     <li><input type="reset" value="Clear" class="button"></li>
                                 </ul>
                             </form>
+                        </div>
+                    </section>
+
+                    <!-- Editor Section -->
+                    <section id="editor">
+                        <header class="major">
+                            <h2>Create a New Post</h2>
+                        </header>
+                        <form id="post-editor">
+                            <div class="field">
+                                <label for="post-title">Title</label>
+                                <input type="text" id="post-title" name="title" placeholder="Enter post title" required>
+                            </div>
+                            <div class="field">
+                                <label for="post-description">Description</label>
+                                <textarea id="post-description" name="description" placeholder="Enter a short description" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="post-content">Content</label>
+                                <textarea id="post-content" name="content" placeholder="Write your post here..." rows="10" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="post-image">Upload Image</label>
+                                <input type="file" id="post-image" name="image" accept="image/*">
+                            </div>
+                            <ul class="actions">
+                                <li><button type="button" class="button primary" onclick="savePost()">Save Post</button></li>
+                                <li><button type="reset" class="button">Clear</button></li>
+                            </ul>
+                        </form>
+                    </section>
+
+                    <!-- Common Block Section -->
+                    <section id="common-block">
+                        <div class="common-block">
+                            <h3>Title</h3>
+                            <p>Description goes here...</p>
+                            <p>Content goes here...</p>
+                            <p><strong>Likes:</strong> <span>0</span></p>
+                            <p><strong>Comments:</strong> <span>0</span></p>
                         </div>
                     </section>
 
@@ -583,13 +940,29 @@
         <!-- Quote Popup -->
         <div id="quote-popup" class="quote-popup">
             <div class="quote-popup-content">
-                <p id="quote-text"></p>
-                <button onclick="closeQuotePopup()">Got It!</button>
+                <p id="quote-text">"Your motivational quote will appear here."</p>
             </div>
         </div>
 
+        <!-- Modern Quote Popup -->
+        <div id="modern-quote-popup" class="modern-quote-popup">
+            <div class="modern-quote-popup-content">
+                <p id="modern-quote-text">"Your motivational quote will appear here."</p>
+                <div class="modern-quote-popup-actions">
+                    <button id="next-quote-button" class="button">Next Quote</button>
+                    <button id="close-modern-quote-popup" class="button secondary">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Short Quote Popup -->
+        <div id="short-quote-popup" class="short-quote-popup">
+            <p id="short-quote-text">"Your motivational quote will appear here."</p>
+            <button id="close-short-quote-popup" class="button">Got It!</button>
+        </div>
+
         <!-- Dark Mode Toggle Button -->
-        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
 
         <!-- Dark Mode Button Styling -->
         <style>
@@ -598,7 +971,7 @@
                 bottom: 20px;
                 right: 20px;
                 padding: 10px 20px;
-                background-color: #4caf50;
+                background-color: var(--primary-color);
                 color: #ffffff;
                 border: none;
                 border-radius: 5px;
@@ -607,7 +980,7 @@
                 z-index: 1000;
             }
             #dark-mode-toggle:hover {
-                background-color: #388e3c;
+                background-color: var(--secondary-color);
             }
         </style>
 
@@ -619,8 +992,15 @@
         <script src="assets/js/main.js"></script>
         <script>
             const toggle = document.getElementById('dark-mode-toggle');
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+            }
+
             toggle.addEventListener('click', () => {
                 document.body.classList.toggle('dark-mode');
+                localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
             });
         </script>
 
