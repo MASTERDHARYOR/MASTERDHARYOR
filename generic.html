@@ -1,231 +1,205 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <title>Blog Page - Paul The Analyst</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            /* General Styles */
-            body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f9;
-            }
+<head>
+    <title>Blog - Paul The Analyst</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        body {
+            background: var(--background-color, #f4f4f9);
+            color: var(--text-color, #222);
+            font-family: 'Roboto Slab', 'Open Sans', Arial, sans-serif;
+        }
+        .blog-header {
+            background: var(--primary-color, #001427);
+            color: var(--accent-color, #f4d58d);
+            padding: 3rem 0 2rem 0;
+            text-align: center;
+        }
+        .blog-header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+        }
+        .blog-header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            color: var(--jasmine, #f4d58d);
+        }
+        .blog-main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .blog-post {
+            background: var(--background-color, #f9f9f9);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .blog-post:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+        }
+        .blog-post img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .blog-post-content {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-post-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.4rem;
+            color: var(--primary-color, #001427);
+        }
+        .blog-post-content p {
+            flex: 1;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+        .blog-post-content a {
+            align-self: flex-start;
+            background: var(--primary-color, #001427);
+            color: var(--accent-color, #f4d58d);
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+        .blog-post-content a:hover {
+            background: var(--engineering-orange, #bf0603);
+            color: #fff;
+        }
+        .single-post {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+        .single-post img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            max-height: 350px;
+            object-fit: cover;
+        }
+        .single-post h3 {
+            font-size: 2.2rem;
+            color: var(--primary-color, #001427);
+            margin-bottom: 1rem;
+        }
+        .single-post .post-meta {
+            color: var(--hookers-green, #708d81);
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .single-post .post-content {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.7;
+        }
+        @media (max-width: 600px) {
+            .blog-main { padding: 1rem; }
+            .single-post { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="blog-header">
+        <h1>Paul The Analyst Blog</h1>
+        <p>Insights, projects, and stories from Paul The Analyst</p>
+    </div>
 
-            /* Navigation Bar */
-            .navbar {
-                background-color: #001427;
-                color: white;
-                padding: 10px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+    <!-- Main Blog Content -->
+    <div class="blog-main" id="blog-container">
+        <!-- Blog posts will be loaded here -->
+    </div>
 
-            .navbar a {
-                color: white;
-                text-decoration: none;
-                margin: 0 15px;
-                font-size: 1rem;
-                font-weight: bold;
-            }
+    <script>
+        // Fetch and display a single post or all posts
+        async function fetchPosts() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const postId = urlParams.get('id');
 
-            .navbar a:hover {
-                text-decoration: underline;
-                color: #f4d58d;
-            }
-
-            .navbar .logo {
-                font-size: 1.5rem;
-                font-weight: bold;
-            }
-
-            .header {
-                background-color: #001427;
-                color: white;
-                padding: 40px 20px;
-                text-align: center;
-            }
-
-            .header h1 {
-                margin: 0;
-                font-size: 2.5rem;
-            }
-
-            .header p {
-                margin: 10px 0 0;
-                font-size: 1.2rem;
-                color: #f4d58d;
-            }
-
-            .blog-container {
-                max-width: 1200px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            .blog-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 20px;
-            }
-
-            .blog-post {
-                background-color: #f9f9f9;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-                transition: transform 0.3s ease;
-            }
-
-            .blog-post:hover {
-                transform: translateY(-5px);
-            }
-
-            .blog-post img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-            }
-
-            .blog-post-content {
-                padding: 15px;
-            }
-
-            .blog-post-content h3 {
-                margin: 0;
-                font-size: 1.5rem;
-                color: #333;
-            }
-
-            .blog-post-content p {
-                margin: 10px 0;
-                color: #555;
-            }
-
-            .blog-post-content a {
-                display: inline-block;
-                margin-top: 10px;
-                color: #4caf50;
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            .blog-post-content a:hover {
-                text-decoration: underline;
-            }
-
-            .single-post {
-                text-align: left;
-            }
-
-            .single-post img {
-                width: 100%;
-                border-radius: 10px;
-                margin-bottom: 20px;
-            }
-
-            .single-post h3 {
-                font-size: 2rem;
-                color: #333;
-            }
-
-            .single-post p {
-                font-size: 1.2rem;
-                color: #555;
-                line-height: 1.6;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <div class="navbar">
-            <div class="logo">Paul The Analyst</div>
-            <div>
-                <a href="index.html">Home</a>
-                <a href="generic.html">Blog</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </div>
-
-        <!-- Header Section -->
-        <div class="header">
-            <h1>Welcome to the Blog</h1>
-            <p>Explore insights, projects, and stories from Paul The Analyst</p>
-        </div>
-
-        <!-- Blog Content -->
-        <div class="blog-container" id="blog-container">
-            <!-- Blog content will be dynamically loaded here -->
-        </div>
-
-        <script>
-            // Fetch and display a single post or all posts
-            async function fetchPosts() {
-                try {
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const postId = urlParams.get('id');
-
-                    if (postId) {
-                        // Fetch a single post by ID
-                        const response = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}`);
-                        const post = await response.json();
-                        displaySinglePost(post);
-                    } else {
-                        // Fetch all posts
-                        const response = await fetch('https://paul-the-analyst.onrender.com/api/posts');
-                        const posts = await response.json();
-                        displayAllPosts(posts);
-                    }
-                } catch (error) {
-                    console.error('Error fetching posts:', error);
-                    document.getElementById('blog-container').innerHTML = '<p>Failed to load posts. Please try again later.</p>';
+                if (postId) {
+                    // Fetch a single post by ID
+                    const response = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}`);
+                    const post = await response.json();
+                    displaySinglePost(post);
+                } else {
+                    // Fetch all posts
+                    const response = await fetch('https://paul-the-analyst.onrender.com/api/posts');
+                    const posts = await response.json();
+                    displayAllPosts(posts);
                 }
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+                document.getElementById('blog-container').innerHTML = '<p>Failed to load posts. Please try again later.</p>';
             }
+        }
 
-            // Display a single post
-            function displaySinglePost(post) {
-                const blogContainer = document.getElementById('blog-container');
-                blogContainer.innerHTML = `
-                    <div class="single-post">
-                        <img src="${post.image || 'assets/images/default.jpg'}" alt="${post.title}" />
-                        <h3>${post.title}</h3>
-                        <p>${post.content}</p>
-                    </div>
-                `;
-            }
+        // Display a single post
+        function displaySinglePost(post) {
+            const blogContainer = document.getElementById('blog-container');
+            blogContainer.innerHTML = `
+                <div class="single-post">
+                    <img src="${post.image || 'assets/images/default.jpg'}" alt="${post.title}" />
+                    <h3>${post.title}</h3>
+                    <div class="post-meta">${post.date ? new Date(post.date).toLocaleDateString() : ''}</div>
+                    <div class="post-content">${post.content}</div>
+                    <a href="generic.html" style="display:inline-block;margin-top:2rem;">&#8592; Back to Blog</a>
+                </div>
+            `;
+        }
 
-            // Display all posts
-            function displayAllPosts(posts) {
-                const blogContainer = document.getElementById('blog-container');
-                blogContainer.innerHTML = `
-                    <div class="blog-grid">
-                        ${posts
-                            .map(
-                                (post) => `
-                                <div class="blog-post">
-                                    <img src="${post.image || 'assets/images/default.jpg'}" alt="${post.title}" />
-                                    <div class="blog-post-content">
-                                        <h3>${post.title}</h3>
-                                        <p>${post.description}</p>
-                                        <a href="generic.html?id=${post.id}">Read More</a>
-                                    </div>
+        // Display all posts
+        function displayAllPosts(posts) {
+            const blogContainer = document.getElementById('blog-container');
+            blogContainer.innerHTML = `
+                <div class="blog-grid">
+                    ${posts
+                        .map(
+                            (post) => `
+                            <div class="blog-post">
+                                <img src="${post.image || 'assets/images/default.jpg'}" alt="${post.title}" />
+                                <div class="blog-post-content">
+                                    <h3>${post.title}</h3>
+                                    <p>${post.description}</p>
+                                    <a href="generic.html?id=${post.id}">Read More</a>
                                 </div>
-                            `
-                            )
-                            .join('')}
-                    </div>
-                `;
-            }
+                            </div>
+                        `
+                        )
+                        .join('')}
+                </div>
+            `;
+        }
 
-            // Load posts on page load
-            window.onload = fetchPosts;
-        </script>
-    </body>
+        // Load posts on page load
+        window.onload = fetchPosts;
+    </script>
+</body>
 </html>
