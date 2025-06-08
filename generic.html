@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <style>
         body {
             background: var(--background-color, #f4f4f9);
@@ -119,6 +120,54 @@
             color: #444;
             line-height: 1.7;
         }
+        nav.back-nav {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        nav.back-nav a {
+            background: var(--primary-color, #001427);
+            color: var(--accent-color, #f4d58d);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        nav.back-nav a:hover {
+            background: var(--engineering-orange, #bf0603);
+            color: #fff;
+        }
+        .comment-section {
+            margin-top: 2.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        .comment-section h4 {
+            margin-top: 0;
+        }
+        .comment-list {
+            margin-bottom: 1rem;
+        }
+        .comment-list .comment {
+            margin-bottom: 0.7rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid #eee;
+        }
+        .like-btn {
+            background: var(--engineering-orange,#bf0603);
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .like-btn.liked {
+            background: var(--primary-color,#001427);
+            color: var(--accent-color,#f4d58d);
+        }
         @media (max-width: 600px) {
             .blog-main { padding: 1rem; }
             .single-post { padding: 1rem; }
@@ -131,6 +180,11 @@
         <h1>Paul The Analyst Blog</h1>
         <p>Insights, projects, and stories from Paul The Analyst</p>
     </div>
+
+    <!-- Back to Home Navigation -->
+    <nav class="back-nav">
+        <a href="index.html"><i class="fas fa-home"></i> Back to Home</a>
+    </nav>
 
     <!-- Main Blog Content -->
     <div class="blog-main" id="blog-container">
@@ -161,7 +215,7 @@
             }
         }
 
-        // Display a single post
+        // Display a single post with comments and likes
         function displaySinglePost(post) {
             const blogContainer = document.getElementById('blog-container');
             blogContainer.innerHTML = `
@@ -170,12 +224,85 @@
                     <h3>${post.title}</h3>
                     <div class="post-meta">${post.date ? new Date(post.date).toLocaleDateString() : ''}</div>
                     <div class="post-content">${post.content}</div>
+                    <div class="comment-like-row">
+                        <button id="like-btn">👍 Like (<span id="like-count">0</span>)</button>
+                    </div>
+                    <div class="comment-section">
+                        <h4>Comments (<span id="comment-count">0</span>)</h4>
+                        <ul id="comments-list" class="comment-list"></ul>
+                        <form id="comment-form" style="margin-top:1rem;">
+                            <input type="text" id="comment-author" placeholder="Your name" required style="padding:0.5rem; width:40%; margin-right:1rem;">
+                            <input type="text" id="comment-text" placeholder="Your comment" required style="padding:0.5rem; width:40%;">
+                            <input type="submit" value="Post" />
+                        </form>
+                    </div>
                     <a href="generic.html" style="display:inline-block;margin-top:2rem;">&#8592; Back to Blog</a>
                 </div>
             `;
+            setupLikeButton(post._id || post.id);
+            loadComments(post._id || post.id);
+
+            document.getElementById('comment-form').onsubmit = function(e) {
+                e.preventDefault();
+                addComment(post._id || post.id);
+            };
         }
 
-        // Display all posts
+        // Likes (backend)
+        async function setupLikeButton(postId) {
+            const likeBtn = document.getElementById('like-btn');
+            const likeCount = document.getElementById('like-count');
+            // Get current like count
+            const res = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}/likes`);
+            const data = await res.json();
+            likeCount.textContent = data.count || 0;
+
+            likeBtn.onclick = async function() {
+                likeBtn.disabled = true;
+                const res = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}/likes`, { method: 'POST' });
+                const data = await res.json();
+                likeCount.textContent = data.count;
+                likeBtn.classList.add('liked');
+                setTimeout(() => {
+                    likeBtn.classList.remove('liked');
+                    likeBtn.disabled = false;
+                }, 800);
+            };
+        }
+
+        // Comments (backend)
+        async function loadComments(postId) {
+            const res = await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}/comments`);
+            const comments = await res.json();
+            const list = document.getElementById('comments-list');
+            document.getElementById('comment-count').textContent = comments.length;
+            if (comments.length === 0) {
+                list.innerHTML = '<li>No comments yet.</li>';
+            } else {
+                list.innerHTML = comments.map(c => `
+                    <li>
+                        <span class="comment-author">${c.author}</span>
+                        <span class="comment-date">${new Date(c.date).toLocaleString()}</span>
+                        <div>${c.text}</div>
+                    </li>
+                `).join('');
+            }
+        }
+
+        async function addComment(postId) {
+            const author = document.getElementById('comment-author').value.trim();
+            const text = document.getElementById('comment-text').value.trim();
+            if (!author || !text) return;
+            await fetch(`https://paul-the-analyst.onrender.com/api/posts/${postId}/comments`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ author, text })
+            });
+            loadComments(postId);
+            document.getElementById('comment-form').reset();
+        }
+
+        // Display all posts (unchanged)
         function displayAllPosts(posts) {
             const blogContainer = document.getElementById('blog-container');
             blogContainer.innerHTML = `
@@ -188,7 +315,7 @@
                                 <div class="blog-post-content">
                                     <h3>${post.title}</h3>
                                     <p>${post.description}</p>
-                                    <a href="generic.html?id=${post.id}">Read More</a>
+                                    <a href="generic.html?id=${post._id || post.id}">Read More</a>
                                 </div>
                             </div>
                         `

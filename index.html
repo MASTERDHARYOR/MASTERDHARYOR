@@ -8,8 +8,8 @@
         <meta name="keywords" content="Data Analytics, Python, SQL, Power BI, Portfolio, Blog">
         <meta name="author" content="Paul Adedayo Sanni">
         <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="assets/css/aos/aos.css">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
 
         <!-- Custom Styles -->
         <style>
@@ -749,7 +749,8 @@ const quotes = [
                       }
                     }
                   }
-                });
+                }
+            });
             // Download chart as image
             function downloadChart() {
                 const link = document.createElement('a');
@@ -757,16 +758,7 @@ const quotes = [
                 link.href = document.getElementById('data-chart').toDataURL();
                 link.click();
             }
-        </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E680S7B2S1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-E680S7B2S1');
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script>
+
             AOS.init();
         </script>
         <!-- Google Analytics -->
@@ -796,10 +788,10 @@ const quotes = [
                             <li><a href="https://www.instagram.com/pauladedayosanni/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
                             <li><a href="https://github.com/MASTERDHARYOR" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
                             <li><a href="mailto:Adedayosanni42@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                        </ul>
-                    </header>
+    </ul>
+</header>
 
-                    <!-- Banner -->
+<!-- Banner -->
                     <section id="banner">
                         <div class="content">
                             <header>
@@ -1012,55 +1004,7 @@ const quotes = [
                     </section>
                       
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                      const ctx = document.getElementById('data-chart').getContext('2d');
-                      const dataChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-                          datasets: [{
-                            label: 'Visitors',
-                            data: [12, 19, 3, 5, 2],
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            tension: 0.4, // curved lines
-                            fill: true,
-                            pointStyle: 'circle',
-                            pointRadius: 4,
-                            pointHoverRadius: 6,
-                          }]
-                        },
-                        options: {
-                          responsive: true,
-                          plugins: {
-                            legend: {
-                              position: 'top'
-                            },
-                            tooltip: {
-                              enabled: true,
-                              backgroundColor: '#333',
-                              titleColor: '#fff',
-                              bodyColor: '#fff'
-                            }
-                          },
-                          scales: {
-                            x: {
-                              grid: {
-                                display: false
-                              }
-                            },
-                            y: {
-                              beginAtZero: true,
-                              ticks: {
-                                stepSize: 5
-                              }
-                            }
-                          }
-                        });
-                    </script>
-                    
                     <button onclick="downloadChart()">Download Chart</button>
-
                     <script>
                       function downloadChart() {
                         const link = document.createElement('a');
@@ -1093,13 +1037,14 @@ const quotes = [
                             <li><a href="index.html">Homepage</a></li>
                             <li><a href="elements.html">Academy & Resources</a></li>
                             <li><a href="admin.html">Admin Dashboard</a></li>
+                            <li><a href="generic.html">Blog Page for Projects</a></li>
                             <li>
                                 <span class="opener">Submenu</span>
                                 <ul>
-                                    <li><a href="#free-courses">Free Courses</a></li>
-                                    <li><a href="#paid-courses">Paid Courses</a></li>
-                                    <li><a href="#community">Community Forum</a></li>
-                                    <li><a href="#events">Events</a></li>
+                                    <li><a href="elements.html#free-courses">Free Courses</a></li>
+                                    <li><a href="elements.html#paid-courses">Paid Courses</a></li>
+                                    <li><a href="elements.html#community">Community Forum</a></li>
+                                    <li><a href="elements.html#events">Events</a></li>
                                 </ul>
                             </li>
                             <li><a href="#quiz">Test Your Knowledge</a></li>
@@ -1195,20 +1140,9 @@ const quotes = [
                 });
             });
 
-            const ctx = document.getElementById('data-chart').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['January', 'February', 'March'],
-                    datasets: [{
-                        label: 'Monthly Visitors',
-                        data: [120, 150, 180],
-                        backgroundColor: ['#4caf50', '#ff9800', '#f44336']
-                    }]
-                }
-            });
+            // Chart already initialized above; remove duplicate ctx and chart initialization here.
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="assets/js/swiper-bundle.min.js"></script>
         <script>
             async function loadBlogCarousel() {
     const response = await fetch('https://paul-the-analyst.onrender.com/api/posts');
