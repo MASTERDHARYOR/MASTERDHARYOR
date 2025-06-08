@@ -1,67 +1,91 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose'); // For database integration
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json({ limit: '10mb' })); // Allow large payloads for images
-app.use(cors({ origin: '*' })); // Allow all origins
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Masterpaul:<db_password>@paul-the-analyst.ipf9hji.mongodb.net/?retryWrites=true&w=majority&appName=PAUL-THE-ANALYST', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => console.log('MongoDB connected!'))
+    .catch((err) => console.error('MongoDB connection error:', err));
 
-let posts = []; // Temporary in-memory storage
+// Define Post Schema
+const postSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    content: String,
+    image: String,
+    date: { type: Date, default: Date.now }
+});
 
-// Default route for the root URL
+// Define Post Model
+const Post = mongoose.model('Post', postSchema);
+
+// Middleware
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
+app.use(require('./routes/posts')); // Adjust path as needed
+
+// Routes
 app.get('/', (req, res) => {
-    res.send('Backend is running successfully!');
+    res.send('Backend running successfully');
 });
 
-// Fetch all posts
-app.get('/api/posts', (req, res) => {
-    res.json(posts); // Replace `posts` with your actual data source
-});
-
-// Fetch a single post by ID
-app.get('/api/posts/:id', (req, res) => {
-    const post = posts.find(p => p.id === parseInt(req.params.id));
-    if (post) {
-        res.json(post);
-    } else {
-        res.status(404).json({ error: 'Post not found' });
+// Create a post
+app.post('/api/posts', async (req, res) => {
+    try {
+        const post = new Post(req.body);
+        await post.save();
+        res.status(201).json(post);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
     }
 });
 
-// Create a new post
-app.post('/api/posts', (req, res) => {
-    const newPost = {
-        id: posts.length + 1,
-        title: req.body.title,
-        description: req.body.description,
-        content: req.body.content,
-        image: req.body.image || '',
-    };
-    posts.push(newPost);
-    res.status(201).json(newPost);
+// Get all posts
+app.get('/api/posts', async (req, res) => {
+    const posts = await Post.find().sort({ date: -1 });
+    res.json(posts);
 });
 
-// Update a post by ID
-app.put('/api/posts/:id', (req, res) => {
-    const postId = parseInt(req.params.id);
-    const postIndex = posts.findIndex((p) => p.id === postId);
+// Get a single post
+app.get('/api/posts/:id', async (req, res) => {
+    const post = await Post.findById(req.params.id);
+    if (!post) return res.status(404).json({ error: 'Post not found' });
+    res.json(post);
+});
 
-    if (postIndex !== -1) {
-        posts[postIndex] = {
-            ...posts[postIndex],
-            title: req.body.title,
-            description: req.body.description,
-            content: req.body.content,
-            image: req.body.image || posts[postIndex].image,
-        };
-        res.json(posts[postIndex]);
-    } else {
-        res.status(404).json({ error: 'Post not found' });
+// Update a post
+app.put('/api/posts/:id', async (req, res) => {
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!post) return res.status(404).json({ error: 'Post not found' });
+    res.json(post);
+});
+
+// Delete a post
+app.delete('/api/posts/:id', async (req, res) => {
+    try {
+        const post = await Post.findByIdAndDelete(req.params.id);
+        if (!post) return res.status(404).json({ error: 'Post not found' });
+        res.json({ message: 'Post deleted' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 });
 
+// Catch-All Route for Undefined Endpoints
+app.use((req, res) => {
+    res.status(404).json({ error: 'Endpoint not found' });
+});
+
+// Start Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
